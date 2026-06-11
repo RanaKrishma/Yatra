@@ -1,0 +1,759 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <!-- Banner Section Start -->
+    <section class="banner bg-transparent position-relative">
+      <div class="container">
+        <div class="banner-inner pb-7">
+          <div class="row align-items-center gx-lg-5 gy-5">
+            <div class="col-lg-6 z-1 overflow-visible">
+              <div class="banner-left text-center text-lg-start">
+                <div class="section-title mb-6 p-0">
+                  <h4 class="pink mb-1">Lets Travel the world <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+                  <h1 class="text-uppercase mb-0">Travel Memories you will never forget</h1>
+                </div>
+                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam qui cum distinctio voluptatibus nulla consectetur iure vel odit tempore eligendi Cumque, ipsam.</p>
+                <div class="banner-filter">
+                  <form class="filter-form shadow p-4  bg-white rounded">
+                    <div class="row gy-4">
+                      <div class="col-lg-3 col-md-4">
+                        <div class="form-group position-relative d-flex align-items-center justify-content-md-start justify-content-center">
+                          <div class="filter-icon">
+                            <i class="fa fa-map-marker me-4 white rounded-circle text-center" aria-hidden="true"></i>
+                          </div>
+                          <div class="filter-input text-start">
+                            <label for="destination" class="mb-0 fw-semibold">Location</label> <br>
+                            <select name="destination" id="destination" class="border-0 bg-transparent ps-0 black fw-normal">
+                              <option>Destination?</option>
+                              <option value="1">Nepal</option>
+                              <option value="2">Bali</option>
+                              <option value="3">Bhutan</option>
+                              <option value="4">India</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-md-4">
+                        <div class="form-group position-relative d-flex align-items-center justify-content-center">
+                          <div class="filter-icon">
+                            <i class="fa fa-clock-o me-4 white text-center rounded-circle" aria-hidden="true"></i>
+                          </div>
+                          <div class="filter-input text-start">
+                            <label for="checkin-date" class="mb-0 fw-semibold">Select Date</label> <br>
+                            <input type="date" class="border-0 bg-transparent p-0 black fw-normal" id="checkin-date">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-md-4">
+                        <div class="form-group position-relative d-flex align-items-center justify-content-md-end justify-content-center">
+                          <div class="filter-icon">
+                            <i class="fa fa-suitcase me-4 white rounded-circle text-center" aria-hidden="true"></i>
+                          </div>
+                          <div class="filter-input text-start">
+                            <label for="tour" class="mb-0 fw-semibold">Tour Type</label> <br>
+                            <select name="tour" id="tour" class="border-0 bg-transparent ps-0 black">
+                              <option value="1">Family Tour</option>
+                              <option value="2">Group Tour</option>
+                              <option value="3">Solo Tour</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-3">
+                        <div class="filter-btn text-lg-end text-center">
+                            <button type="submit" class="btn-blue btn-red rounded rounded white">
+                              Get Started
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="banner-right">
+                <div class="row justify-content-center gy-4">
+                  <div class="col-lg-6 col-md-6">
+                    <div class="banner-image text-end position-relative">
+                      <div class="banner-destination-pop my-4 m-auto p-3  rounded text-center position-absolute w-50 bg-blue">
+                        <span class="mb-2 h6 fw-bold white"><span class="h4 fw-bold num" data-val="100"></span> + <br> Destinations</span>
+                      </div>
+                      <img src="{% static 'images/banner5.jpg' %}" alt="banner-image" class="rounded w-75">
+                    </div> 
+                  </div>
+                  <div class="col-lg-6 col-md-6 align-self-center">
+                    <div id="video-gallery" class="video-gallery">
+                      <a href="https://www.youtube.com/watch?v=MLpWrANjFbI" class="video-item" data-lg-video="https://www.youtube.com/watch?v=MLpWrANjFbI">
+                          <div class="spin-demo-main position-relative">
+                              <i class="fa fa-play pink" aria-hidden="true"></i>
+                              <svg id="rotatingText" viewBox="0 0 200 200" width="115" height="115">
+                                  <defs>
+                                      <path id="circle" d="M 100, 100
+                                                          m -75, 0
+                                                          a 75, 75 0 1, 0 150, 0
+                                                          a 75, 75 0 1, 0 -150, 0">
+                                      </path>
+                                  </defs>
+                                  <text>
+                                      <textPath alignment-baseline="hanging" xlink:href="#circle" class="text">
+                                          Play Demo to See how it works....
+                                      </textPath>
+                                  </text>
+                              </svg>
+                          </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                    <div class="banner-image">
+                      <img src="{% static 'images/banner-6.jpg' %}" alt="banner-image" class="rounded w-100">
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                    <div class="banner-image position-relative">
+                      <img src="{% static 'images/banner4.jpg' %}" alt="banner-image" class="rounded w-100">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="banner-bottom">
+          <div class="row gy-5 justify-content-between">
+            <div class="col-lg-3 col-md-3">
+              <div class="social-icons">
+                <ul class="m-0 p-0 d-flex align-items-center justify-content-center justify-content-md-start">
+                  <li class="social-icon me-2 mb-0">
+                    <a href="#"><i class="fa fa-facebook rounded-circle text-center blue" aria-hidden="true"></i></a>
+                  </li>
+                  <li class="social-icon me-2 mb-0">
+                    <a href="#"><i class="fa fa-instagram rounded-circle text-center blue" aria-hidden="true"></i></a>
+                  </li>
+                  <li class="social-icon mb-0 me-2">
+                    <a href="#"><i class="fa fa-twitter rounded-circle text-center blue" aria-hidden="true"></i></a>
+                  </li>
+                  <li class="social-icon m-0">
+                    <a href="#"><i class="fa fa-google rounded-circle text-center blue" aria-hidden="true"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-9">
+              <div class="partner-image">
+                <div class="partner-slider overflow-hidden ">
+                  <div>
+                    <img src="{% static 'images/partner7.png' %}" alt="partner-image">
+                  </div>
+                  <div>
+                    <img src="{% static 'images/partner8.png' %}" alt="partner-image">
+                  </div>
+                  <div>
+                    <img src="{% static 'images/partner9.png' %}" alt="partner-image">
+                  </div>
+                  <div>
+                    <img src="{% static 'images/partner10.png' %}" alt="partner-image">
+                  </div>
+                  <div>
+                    <img src="{% static 'images/partner7.png' %}" alt="partner-image">
+                  </div>
+                  <div>
+                    <img src="{% static 'images/partner8.png' %}" alt="partner-image">
+                  </div>
+                  <div>
+                    <img src="{% static 'images/partner9.png' %}" alt="partner-image">
+                  </div>
+                  <div>
+                    <img src="{% static 'images/partner10.png' %}" alt="partner-image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Banner Section Ends -->
+
+    <!-- Top Destination Section Starts -->
+    <section class="top-destination pt-6">
+      <div class="container overflow-hidden">
+        <div class="top-destination-inner">
+          <div class="section-title text-center mb-6">
+            <h4 class="pink mb-1">Top Destination <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+            <h2 class="text-uppercase mb-0">Recommended Popular Destinations</h2>
+          </div>
+          <p class="mb-5 text-center">See the beauty of the world easily and safely with Yatra.</p>
+          <div class="top-destination-body">
+            <div class="swiper1 mySwiper mb-5">
+              <div class="swiper-wrapper">
+                {% for i in c %}
+                <div class="swiper-slide shadow rounded">
+                  <div class="destination-image">
+                    <a href="/tour/{{i.id}}/"><img src="{{i.country_img.url}}" alt="destination-image" class="w-100 rounded-top"></a>
+                  </div>
+                  <div class="destination-info p-3 bg-snow rounded-bottom">
+                    <div class="destination-info-title text-center d-flex justify-content-between mb-2">
+                      <h3 class="m-0"><a href="/tour/{{i.id}}/" class="blue">{{i.country_name}}</a></h3>
+                      <p class="mb-0 black">{{i.countries.count}}+ Trips</p>
+                    </div>
+                    <div class="rating-price d-flex justify-content-between">
+                      <!-- <p class="mb-0 fs-6"><span class="pink h4">$150</span> Starting</p> -->
+                      <ul class="m-0 p-0 d-flex">
+                        <li class="mb-0 me-1"><i class="fa fa-star yellow" aria-hidden="true"></i></li>
+                        <li class="mb-0 me-1"><i class="fa fa-star yellow" aria-hidden="true"></i></li>
+                        <li class="mb-0 me-1"><i class="fa fa-star yellow" aria-hidden="true"></i></li>
+                        <li class="mb-0 me-1"><i class="fa fa-star yellow" aria-hidden="true"></i></li>
+                        <li class="mb-0"><i class="fa fa-star yellow" aria-hidden="true"></i></li>
+                      </ul>
+                    </div>
+                  </div> 
+                </div>
+                {% endfor %}
+              </div>
+            </div> 
+            <div class="destination-button text-center">
+              <a href="/destination/" class="btn-blue btn-red rounded">View All Destinations</a>  
+            </div>        
+          </div>
+        </div>  
+      </div>
+    </section>
+    <!-- Top Destination Section Ends -->
+
+    <!-- About Us Section Start -->
+    <section class="about-us pt-0 bg-transparent">
+      <div class="container">
+        <div class="about-us-inner">
+          <div class="row gx-lg-5 gy-5 align-items-center">
+            <div class="col-lg-7">
+              <div class="about-right text-center text-lg-start">
+                <div class="section-title p-0 mb-6">
+                  <h4 class="pink mb-1">About Us <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+                  <h2 class="text-uppercase w-75 m-auto m-lg-0 mb-0">Experience the life you have always wanted</h2>
+                </div>
+                <div class="section-body mb-5">
+                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere iusto quam inventore nulla temporibus, commodi nihil asperiores vero tenetur non perferendis quisquam illo aspernatur nemo ipsum assumenda ullam Ex.</p>
+                  <div class="row gx-md-5 gy-4">
+                    <div class="col-lg-4 col-md-4">
+                      <div class="experience p-3 rounded bg-white text-center">
+                        <h3 class="blue mb-0"><span data-val="15" class="num"></span>+</h3>
+                        <p class="mb-0">Years of experience</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                      <div class="customer p-3 rounded bg-white text-center">
+                        <h3 class="blue mb-0"><span data-val="250" class="num"></span>+</h3>
+                        <p class="mb-0">Happy Customers</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                      <div class="destination-colab p-3 rounded bg-white text-center">
+                        <h3 class="blue mb-0"><span data-val="3" class="num"></span>k+</h3>
+                        <p class="mb-0">Destination Collabration</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="/aboutus/" class="btn-red btn-blue rounded">More About Us</a>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="about-left text-center position-relative d-flex justify-content-center">
+                <div class="image-container">
+                  <img src="{% static 'images/travel-guy.png' %}" alt="about-image" class="w-100 h-100 object-fit-cover">
+                </div>
+                <span class="black p-2 bg-light-grey rounded position-absolute verified border border-4 border-white"><i class="fa fa-check-circle me-2 blue" aria-hidden="true"></i>Verified</span>
+                <span class="black p-2 bg-light-grey rounded position-absolute verified1 border border-4 border-white"><i class="fa fa-shield me-2 blue" aria-hidden="true"></i>24/7 Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Us Section Start -->
+     
+    <!-- Diversity Section Starts -->
+    <section class="diversity bg-transparent pt-0">
+      <div class="container">
+        <div class="diversity-inner">
+          <div class="row align-items-center gy-5 gx-lg-5">
+            <div class="col-lg-5">
+              <div class="diversity-left">
+                <div class="slider-for">
+                  <div><img src="{% static 'images/diversity1.jpg' %}" alt="Slide 1" class="w-100 m-auto"></div>
+                  <div><img src="{% static 'images/diversity2.jpg' %}" alt="Slide 2" class="w-100 m-auto"></div>
+                  <div><img src="{% static 'images/diversity3.jpg' %}" alt="Slide 3" class="w-100 m-auto"></div>
+                  <div><img src="{% static 'images/diversity4.jpg' %}" alt="Slide 4" class="w-100 m-auto"></div>
+                  <div><img src="{% static 'images/diversity5.jpg' %}" alt="Slide 5" class="w-100 m-auto"></div>
+                  <div><img src="{% static 'images/diversity3.jpg' %}" alt="Slide 6" class="w-100 m-auto"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="diversity-left">
+                <div class="section-title p-0 mb-6 text-center text-lg-start">
+                  <h4 class="pink mb-1">Explore Diversity <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+                  <h2 class="text-uppercase w-75 m-auto m-lg-0">Plan your trip within your budget</h2>
+                </div>
+                <div class="section-body text-center text-lg-start">
+                  <div class="slider-nav p-0 mb-5">
+                    <div class="thumbnail-image"><img src="{% static 'images/diversity1.jpg' %}" alt="Thumbnail 1" class="rounded"></div>
+                    <div class="thumbnail-image"><img src="{% static 'images/diversity2.jpg' %}" alt="Thumbnail 2" class="rounded"></div>
+                    <div class="thumbnail-image"><img src="{% static 'images/diversity3.jpg' %}" alt="Thumbnail 3" class="rounded"></div>
+                    <div class="thumbnail-image"><img src="{% static 'images/diversity4.jpg' %}" alt="Thumbnail 4" class="rounded"></div>
+                    <div class="thumbnail-image"><img src="{% static 'images/diversity5.jpg' %}" alt="Thumbnail 5" class="rounded"></div>
+                    <div class="thumbnail-image"><img src="{% static 'images/diversity3.jpg' %}" alt="Thumbnail 6" class="rounded"></div>
+                  </div>
+                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, deleniti officia facere, doloremque atque, commodi pariatur vitae vel aut hic nulla quae libero delectus maxime dicta impedit quasi reiciendis deserunt.</p>
+                  <a href="destination-4col.html" class="btn-blue btn-red rounded">View More Trips</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Diversity Section Ends -->
+
+    <!-- Features Section Starts -->
+    <section class="feature bg-transparent pt-0">
+      <div class="container">
+        <div class="feature-inner">
+          <div class="row align-items-end gx-md-5 gy-5">
+            <div class="col-lg-3">
+              <div class="section-title p-0 mb-0 text-center text-lg-start m-auto">
+                <h4 class="pink mb-1">What we give <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+                <h2 class="text-uppercase mb-6">Best Features for you</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi vero ex debitis maiores as.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <div class="feature-box p-2 px-4  rounded text-center text-md-start bg-light-grey">
+                <i class="fa fa-th blue bg-white text-center rounded mb-3" aria-hidden="true"></i>
+                <h3 class="mb-1">Lots of choices</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi vero ex debitis maiores.</p>
+              </div>
+            </div> 
+            <div class="col-lg-3 col-md-4">
+              <div class="feature-box p-2 px-4  rounded text-center text-md-start bg-light-grey">
+                <i class="fa fa-user-plus blue bg-white text-center rounded mb-3" aria-hidden="true"></i>
+                <h3 class="mb-1">Best Tour Guides</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi vero ex debitis maiores.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+              <div class="feature-box p-2 px-4  rounded text-center text-md-start bg-light-grey">
+                <i class="fa fa-calendar blue bg-white text-center rounded mb-3" aria-hidden="true"></i>
+                <h3 class="mb-1">Easy Bookings</h3>
+                <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi vero ex debitis maiores.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Features Section Ends -->
+
+    <!-- Offer Banner Section Starts -->
+    <section class="offer-banner position-relative pt-0 bg-white">
+      <div class="container">
+        <div class="offer-banner-inner m-auto text-center text-lg-start position-relative bg-light-grey rounded p-8">
+          <div class="row gx-0 gx-md-5 align-items-center">
+            <div class="col-lg-7">
+              <div class="offer-banner-info">
+                <h3 class="black">Savings Worldwide</h3>
+                <h2 class="black text-uppercase">Pack Your Bags! Unbeatable Travel Deals Await <br> <span class="blue">50% Off</span></h2>
+                <a href="#" class="btn-blue btn-red rounded">Learn More</a>  
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="offer-image">
+                <img src="{% static 'images/3d-icon-traveling-vacation.png' %}" alt="" class="w-100">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Offer Banner Section Ends -->
+
+    <!-- Package Section Starts -->
+      <section class="packages bg-transparent pt-0">
+        <div class="container">
+          <div class="packages-inner">
+            <div class="section-title p-0 text-center text-lg-start mb-6">
+              <div class="row align-items-center gy-4">
+                <div class="col-lg-6">
+                  <div class="title-left">
+                    <h4 class="pink mb-1">Popular Packages <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+                    <h2 class="text-uppercase mb-0">Explore Our Thrilling Tour Plans</h2>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="title-right">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, deleniti officia facere, doloremque atque, commodi pariatur vitae vel aut hic nulla quae libero delectus maxime dicta impedi.</p>             
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="packages-body ">
+              <div class="row gy-5 gx-md-5">
+                {% for tour in india_tours %}
+                <div class="col-lg-4 col-md-6">
+                  <div class="package-box shadow rounded">
+                    <div class="package-box-body rounded-bottom bg-white">
+                      <div class="package-box-body-top p-4 border-bottom border-1 border-grey">
+                        <ul class="destination-date small d-flex justify-content-between">
+                          <li class="blue mb-0"><i class="fa fa-map-marker" aria-hidden="true"></i> India</li>
+                          <li class="blue mb-0"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{ tour.duration }} Days</li>
+                        </ul>
+                        <h3 class="my-2"><a href="/tourdetail/{{ tour.id }}/" class="black">{{ tour.tours_name }}</a></h3>
+                        <p class="mb-0">{{ tour.include|truncatewords:12 }}</p>
+                      </div>
+                      <div class="package-box-body-bottom rounded-bottom p-4 d-flex justify-content-between align-items-center">
+                        <div class="price">
+                          <h4 class="mb-0 pink h3 fw-bold">&#8377; {{ tour.rate }}</h4>
+                          <span class="grey">Per Person</span>
+                        </div>
+                        <div class="rating rounded-bottom">
+                          <ul class="m-0 p-0 d-flex mb-2">
+                            {% for _ in tour.full_stars %}
+                            <li class="mb-0 me-1"><i class="fa fa-star yellow" aria-hidden="true"></i></li>
+                            {% endfor %}
+                            {% for _ in tour.empty_stars %}
+                            <li class="mb-0 me-1"><i class="fa fa-star" aria-hidden="true"></i></li>
+                            {% endfor %}
+                          </ul>
+                          <a href="/booking/{{ tour.id }}/" class="btn-blue btn-white rounded">Book Now</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                  <p class="text-center mb-0">No India tours available right now.</p>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Package Section Ends -->
+
+    <!-- Facility Section Starts -->
+      <section class="facility pt-0">
+        <div class="container">
+          <div class="facility-inner">
+            <div class="row align-items-center gx-md-5 gy-5">
+              <div class="col-lg-5">
+                <div class="facility-left">
+                  <div class="section-title p-0 text-center text-lg-start mb-6">
+                    <h4 class="pink mb-1">Our Facility <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+                    <h2 class="text-uppercase mb-0">Our Experience meets the highest quality</h2>        
+                  </div>
+                  <div class="facility-list">
+                    <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, deleniti officia facere, doloremque atque, commodi pariatur vitae vel aut hic nulla quae libero delectus maxime dicta impedi.</p>
+                    <div class="row gy-4 align-items-center justify-content-center">
+                      <div class="col-lg-12 col-md-6">
+                        <div class="facility-box d-flex align-items-center">
+                          <div class="facility-box-icon">
+                            <i class="fa fa-bell me-4 rounded-circle bg-white text-center blue border border-2" aria-hidden="true"></i>
+                          </div>
+                          <div class="facility-box-info">
+                            <h3 class="mb-1">Travel Alert & Registration</h3>
+                            <p class="mb-0">Lorem ipsum dolor sit amet t, deleniti officia facere, doloremque consectetur adipisicing elit.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-6">
+                        <div class="facility-box d-flex align-items-center">
+                          <div class="facility-box-icon">
+                            <i class="fa fa-plus-square me-4 rounded-circle bg-white text-center blue border border-2" aria-hidden="true"></i>
+                          </div>
+                          <div class="facility-box-info">
+                            <h3 class="mb-1">Health & Medical Security</h3>
+                            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisi t, deleniti officia facere, doloremque a scing elit.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md-6">
+                        <div class="facility-box d-flex align-items-center">
+                          <div class="facility-box-icon">
+                            <i class="fa fa-credit-card-alt me-4 rounded-circle bg-white text-center blue border border-2" aria-hidden="true"></i>
+                          </div>
+                          <div class="facility-box-info">
+                            <h3 class="mb-1">Flexible Payment Options</h3>
+                            <p class="mb-0">Lorem ipsum t, deleniti officia facere, doloremque a dolor sit amet consectetur adipisicing elit.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="facility-center">
+                  <img src="{% static 'images/hotel-image1.jpg' %}" alt="facility-image" class="w-100 rounded">
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="facility-right text-center text-md-start">
+                  <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem tempore cumque, quibusdam velit iste repellat, ducimus dolore laboriosam labore maxime atque numquam.</p>
+                  <img src="{% static 'images/hotel-image2.jpg' %}" alt="facility-image" class="w-100 rounded mb-5">
+                  <a href="/contactus/" class="btn-blue btn-red rounded">Contact Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Facility Section Starts -->
+
+    <!-- Testimonial Section Starts -->
+    <section class="testimonial pt-0">
+      <div class="container">
+        <div class="testemonial-inner">
+          <div class="testimonial-body">
+            <div class="row gy-5 gx-lg-3 align-items-center">
+              <div class="col-lg-4">
+                <div class="testimonial-left text-center text-lg-start">
+                  <div class="section-title p-0 mb-6">
+                    <h4 class="pink mb-1">Testimonial <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+                    <h2 class="text-uppercase mb-0">Satisfied Customers are our best Ads</h2>
+                  </div>
+                  <div class="review-counter">
+                    <ul class="d-flex justify-content-center justify-content-lg-start">
+                      <li><img src="{% static 'images/testemonial1.jpg' %}" alt="customer-image" class="rounded-circle m-0 border border-3 border-grey"></li>
+                      <li><img src="{% static 'images/testemonial2.jpg' %}" alt="customer-image" class="rounded-circle border border-3 border-grey"></li>
+                      <li><img src="{% static 'images/testemonial3.jpg' %}" alt="customer-image" class="rounded-circle border border-3 border-grey"></li>
+                      <li><img src="{% static 'images/testemonial4.jpg' %}" alt="customer-image" class="rounded-circle border border-3 border-grey"></li>
+                    </ul>
+                    <span class="fw-bold"> <span data-val="200" class="num"></span> + Reviews</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="testimonial-slider1">
+                  <div class="testimonial-box py-7 px-6 bg-white rounded mx-4">
+                    <div class="testimonial-box-top d-flex align-items-center mb-4 justify-content-between">
+                      <div class="testimonial-bio d-flex align-items-center">
+                        <div class="testimonial-image m-0 me-2">
+                          <img src="{% static 'images/testemonial1.jpg' %}" alt="testemonial-image" class="rounded-circle">
+                        </div>
+                        <div class="testemonial-bio-info">
+                          <span class="h5 fw-bold  pink">John White</span>
+                          <p class="mb-0">Trekker</p>
+                        </div>
+                      </div>
+                      <div class="testimonial-rating fw-bold">
+                        4.2 <i class="fa fa-star yellow" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="testimonial-box-bottom">
+                      <i class="fa fa-quote-left mb-2" aria-hidden="true"></i>
+                      <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem sunt atque, eligendi repellat architecto unde rerum laudantium sint expedita beatae numquam voluptate debitis cum repudiandae dolores facilis laborum, similique totam.</p>
+                    </div>
+                  </div>
+                  <div class="testimonial-box py-7 px-6 bg-white rounded mx-4">
+                    <div class="testimonial-box-top d-flex align-items-center mb-4 justify-content-between">
+                      <div class="testimonial-bio d-flex align-items-center">
+                        <div class="testimonial-image m-0 me-2">
+                          <img src="{% static 'images/testemonial2.jpg' %}" alt="testemonial-image" class="rounded-circle">
+                        </div>
+                        <div class="testemonial-bio-info">
+                          <span class="h5 fw-bold  pink">Alessa Keys</span>
+                          <p class="mb-0">Developer</p>
+                        </div>
+                      </div>
+                      <div class="testimonial-rating fw-bold">
+                        4.5 <i class="fa fa-star yellow" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="testimonial-box-bottom">
+                      <i class="fa fa-quote-left mb-2" aria-hidden="true"></i>
+                      <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem sunt atque, eligendi repellat architecto unde rerum laudantium sint expedita beatae numquam voluptate debitis cum repudiandae dolores facilis laborum, similique totam.</p>
+                    </div>
+                  </div>
+                  <div class="testimonial-box py-7 px-6 bg-white rounded mx-4">
+                    <div class="testimonial-box-top d-flex align-items-center mb-4 justify-content-between">
+                      <div class="testimonial-bio d-flex align-items-center">
+                        <div class="testimonial-image m-0 me-2">
+                          <img src="{% static 'images/testemonial3.jpg' %}" alt="testemonial-image" class="rounded-circle">
+                        </div>
+                        <div class="testemonial-bio-info">
+                          <span class="h5 fw-bold  pink">Erin Jones</span>
+                          <p class="mb-0">CEO</p>
+                        </div>
+                      </div>
+                      <div class="testimonial-rating fw-bold">
+                        5.0 <i class="fa fa-star yellow" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="testimonial-box-bottom">
+                      <i class="fa fa-quote-left mb-2" aria-hidden="true"></i>
+                      <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem sunt atque, eligendi repellat architecto unde rerum laudantium sint expedita beatae numquam voluptate debitis cum repudiandae dolores facilis laborum, similique totam.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonial Section Ends -->
+     <!-- Customer Reviews Section Start -->
+{% for r in reviews %}
+
+<div class="col-lg-4 col-md-6">
+    <div class="review-box p-4 bg-white shadow rounded text-center">
+
+        <h4>{{ r.name }}</h4>
+
+        <div>
+            {% for i in "12345"|slice:":r.rating" %}
+            ⭐
+            {% endfor %}
+        </div>
+
+        <p>{{ r.message }}</p>
+
+    </div>
+</div>
+
+{% empty %}
+
+<p class="text-center">No reviews yet.</p>
+
+{% endfor %}
+<!-- Customer Reviews Section End -->
+
+    <!-- Blog Section Starts -->
+    <section class="blog bg-light-grey pt-0">
+      <div class="container">
+        <div class="blog-inner">
+          <div class="section-title text-center mb-6">
+            <h4 class="pink mb-1">Articles <i class="fa fa-paper-plane-o ms-2" aria-hidden="true"></i></h4>
+            <h2 class="text-uppercase mb-0">Inspirations, Guides & Stories</h2>
+          </div>
+          <div class="blog-body">
+            <div class="blog-body-top">
+              <div class="row gx-md-5 gy-5">
+                <div class="col-lg-4 col-md-6">
+                  <div class="blog-box">
+                    <div class="blog-image">
+                      <a href="/blog-detail/"><img src="{% static 'images/blog7.jpg' %}" alt="blog-image" class="w-100 rounded-top"></a>
+                    </div>
+                    <div class="blog-box-body p-4 bg-white rounded-bottom">
+                      <div class="blog-box-top mb-2">
+                        <ul class="d-flex justify-content-between">
+                          <li class="mb-0 small"><i class="fa fa-calendar me-1 blue" aria-hidden="true"></i> 25th Sept 2024</li>
+                          <li class="mb-0 small"><i class="fa fa-bookmark me-1 blue" aria-hidden="true"></i> 3 Min Read</li>
+                        </ul>
+                      </div>
+                      <div class="blog-box-info mb-4">
+                        <h3 class="mb-2"><a href="/blog-detail/" class="black">The Guide to Camping for Beginners: Gear and Hacks</a></h3>
+                      </div>
+                      <div class="blog-box-bottom d-flex justify-content-between align-items-center">
+                          <span>By <a href="#" class="fw-bold">Lisa Gives</a></span>
+                          <a href="/blog-detail/" class="btn-blue rounded">Read More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                  <div class="blog-box">
+                    <div class="blog-image">
+                      <a href="/blog-detail/"><img src="{% static 'images/blog8.jpg' %}" alt="blog-image" class="w-100 rounded-top"></a>
+                    </div>
+                    <div class="blog-box-body p-4 bg-white rounded-bottom">
+                      <div class="blog-box-top mb-2">
+                        <ul class="d-flex justify-content-between">
+                          <li class="mb-0 small"><i class="fa fa-calendar me-1 blue" aria-hidden="true"></i> 29th Sept 2024</li>
+                          <li class="mb-0 small"><i class="fa fa-bookmark me-1 blue" aria-hidden="true"></i> 3 Min Read</li>
+                        </ul>
+                      </div>
+                      <div class="blog-box-info mb-4">
+                        <h3 class="mb-2"><a href="/blog-detail/" class="black">The Best Times of Year for Rafting: A Seasonal Guide</a></h3>
+                      </div>
+                      <div class="blog-box-bottom d-flex justify-content-between align-items-center">
+                          <span>By <a href="#" class="fw-bold">Erin Johns</a></span>
+                          <a href="/blog-detail/" class="btn-blue rounded">Read More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="blog-right">
+                    <div class="blog-list">
+                      <div class="row gy-4">
+                        <div class="col-lg-12 col-md-6">
+                          <div class="blog-box p-4 rounded bg-white">
+                            <div class="row justify-content-between align-items-center">
+                              <div class="col-8">
+                                <div class="blog-info">
+                                  <h4 class="mb-2"><a href="/blog-detail/" class="black">The Guide to Camping for Beginners: Gear and Hacks</a></h4>
+                                  <span class="small"><i class="fa fa-calendar me-1 blue" aria-hidden="true"></i> 25th Sept 2024</span>
+                                </div>
+                              </div>
+                              <div class="col-4">
+                                <div class="blog-image text-end">
+                                  <img src="{% static 'images/blog7.jpg' %}" alt="blog-image" class="object-fit-cover rounded">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6">
+                          <div class="blog-box p-4  rounded bg-white">
+                            <div class="row justify-content-between align-items-center">
+                              <div class="col-8">
+                                <div class="blog-info">
+                                  <h4 class="mb-2"><a href="/blog-detail/" class="black">The Best Times of Year for Rafting: A Seasonal Guide</a></h4>
+                                  <span class="small"><i class="fa fa-calendar me-1 blue" aria-hidden="true"></i> 29th Sept 2024</span>
+                                </div>
+                              </div>
+                              <div class="col-4">
+                                <div class="blog-image text-end">
+                                  <img src="{% static 'images/blog8.jpg' %}" alt="blog-image" class="object-fit-cover rounded">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-12 col-md-6">
+                          <div class="blog-box p-4 rounded bg-white">
+                            <div class="row justify-content-between align-items-center">
+                              <div class="col-8">
+                                <div class="blog-info">
+                                  <h4 class="mb-2"><a href="/blog-detail/" class="black">Skiing on a Budget: Money-Saving Tips</a></h4>
+                                  <span class="small"><i class="fa fa-calendar me-1 blue" aria-hidden="true"></i> 2nd Oct 2024</span>
+                                </div>
+                              </div>
+                              <div class="col-4">
+                                <div class="blog-image text-end">
+                                  <img src="{% static 'images/blog13.jpg' %}" alt="blog-image" class="object-fit-cover rounded">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Blog Section Ends -->
+
+    {% endblock %}
+

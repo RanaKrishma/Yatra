@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="razorpay-payment">
+  <div class="container">
+    <div class="payment-card">
+
+      <!-- Tour Image -->
+      <div class="tour-image">
+        <img src="{{ t2.tours_img.url }}" class="active">
+      </div>
+
+      <!-- Tour Details -->
+      <div class="tour-details">
+        <h2>{{ t2.tours_name }}</h2>
+
+        <div class="detail-row">
+          <span>Price Per Person:</span>
+          <strong>₹ <span id="price">{{ t2.rate }}</span></strong>
+        </div>
+
+        <div class="detail-row">
+          <span>Total People:</span>
+          <strong id="people">{{ booking.persons }}</strong>
+        </div>
+
+        {% if room_price %}
+        <div class="detail-row">
+          <span>Room Price:</span>
+          <strong>₹ {{ room_price }}</strong>
+        </div>
+        {% endif %}
+
+        <div class="detail-row">
+          <span>Subtotal:</span>
+          <strong>₹ {{ base_price|default:0|floatformat:2 }}</strong>
+        </div>
+
+        {% if discount %}
+        <div class="detail-row">
+          <span>Discount ({{ discount_percent }}%):</span>
+          <strong>- ₹ {{ discount|floatformat:2 }}</strong>
+        </div>
+        {% endif %}
+
+        <div class="detail-row">
+          <span>GST (10%):</span>
+          <strong>₹ {{ gst|floatformat:2 }}</strong>
+        </div>
+
+        <div class="detail-row total">
+          <span>Total Price:</span>
+          <strong>₹ <span id="total">{{ total_price }}</span></strong>
+        </div>
+
+        {% if payment_error %}
+        <div class="alert alert-danger" role="alert">
+          {{ payment_error }}
+        </div>
+        {% endif %}
+
+        <p class="text-muted mt-2" style="font-size:0.95rem; font-weight:600;">
+          Scan the QR code on the right with your UPI app, pay the full amount, then confirm payment.
+        </p>
+
+        <p class="text-muted mt-2" style="font-size:0.9rem;">
+          * Prices include 10% GST and a {{ discount_percent }}% discount has been applied.
+        </p>
+      </div>
+
+      <div class="qr-panel">
+        <h3>Pay via UPI QR</h3>
+        <div class="qr-box">
+          <canvas id="upi-qr"></canvas>
+        </div>
+        <div class="qr-text">
+          <div class="detail-row">
+            <span>UPI ID:</span>
+            <strong>{{ upi_id }}</strong>
+          </div>
+          <div class="detail-row">
+            <span>Amount:</span>
+            <strong>₹ {{ total_price|floatformat:2 }}</strong>
+          </div>
+          <div class="detail-row">
+            <span>Note:</span>
+            <strong>{{ payment_note }}</strong>
+          </div>
+        </div>
+
+        <button type="button" class="copy-btn" id="copy-upi">Copy UPI ID</button>
+
+        <form method="post" action="{% url 'payment_success' booking.id %}" class="confirm-form">
+          {% csrf_token %}
+          <button type="submit" class="pay-btn confirm">I have paid</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var qr = new QRious({
+      element: document.getElementById('upi-qr'),
+      value: "{{ upi_string|escapejs }}",
+      size: 260,
+      level: 'H',
+      background: '#ffffff',
+      foreground: '#000000'
+    });
+
+    var copyButton = document.getElementById('copy-upi');
+    copyButton.addEventListener('click', function () {
+      navigator.clipboard.writeText('{{ upi_id }}').then(function () {
+        copyButton.textContent = 'Copied!';
+        setTimeout(function () {
+          copyButton.textContent = 'Copy UPI ID';
+        }, 2000);
+      });
+    });
+  });
+</script>
+
+<style>
+    
+.razorpay-payment {
+    padding: 80px 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f3f6ff, #e6edff);
+    display: flex;
+    align-items: center;
+}
+
+.payment-card {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    display: flex;
+    overflow: hidden;
+}
+
+.tour-image {
+    flex: 1;
+}
+
+.tour-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tour-details {
+    flex: 1;
+    padding: 40px;
+}
+
+.tour-details h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.detail-row.total {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+.pay-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 8px;
+    background: #0d6efd;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pay-btn:hover {
+    background: #084298;
+    transform: translateY(-2px);
+}
+
+.qr-panel {
+    flex: 1;
+    padding: 40px;
+    border-left: 1px solid #eef2ff;
+    background: #fafbff;
+}
+
+.qr-panel h3 {
+    margin-bottom: 20px;
+    color: #0d6efd;
+}
+
+.qr-box {
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.08);
+    margin-bottom: 20px;
+}
+
+.qr-text {
+    margin-top: 20px;
+}
+
+.qr-text .detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.copy-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #0d6efd;
+    border-radius: 8px;
+    background: #fff;
+    color: #0d6efd;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.confirm-form {
+    margin-top: 20px;
+}
+
+@media(max-width:768px){
+    .payment-card {
+        flex-direction: column;
+    }
+
+    .tour-image img {
+        height: 300px;
+    }
+
+    .qr-panel {
+        border-left: none;
+        border-top: 1px solid #eef2ff;
+    }
+}
+</style>
+
+{% endblock %}

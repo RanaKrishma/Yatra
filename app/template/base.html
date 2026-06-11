@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+  
+<!-- Mirrored from htmldesigntemplates.com/html/yatra/index-6.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Jan 2026 10:27:03 GMT -->
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Yatra - Travel Agency HTML Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/yatra-01.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!--Flaticons CSS-->
+    <link href="{% static 'font/flaticon.css' %}" rel="stylesheet" type="text/css">
+
+    <!--Plugin CSS-->
+    <link href="{% static 'css/plugin.css' %}" rel="stylesheet" type="text/css">
+
+    <!--Custom CSS-->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="{% static 'icon/font-awesome.min.css' %}">
+
+
+  </head>
+  <style>
+    /* ===== NAVBAR LOGIN / LOGOUT DESIGN ===== */
+
+/* Welcome text */
+.welcome-text {
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Common button style */
+.nav-btn {
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Login button */
+.login-btn {
+    background: linear-gradient(45deg, #1976D2, #42A5F5);
+    box-shadow: 0 4px 12px rgba(25,118,210,0.3);
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(25,118,210,0.5);
+    color: #fff;
+}
+
+/* Logout button */
+.logout-btn {
+    background: linear-gradient(45deg, #E53935, #FF7043);
+    box-shadow: 0 4px 12px rgba(229,57,53,0.3);
+}
+
+.logout-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(229,57,53,0.5);
+    color: #fff;
+}
+
+/* ===== FLOATING CHAT WIDGET ===== */
+.chat-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 22px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1BAA7D, #0F8C6B);
+    box-shadow: 0 10px 24px rgba(15, 140, 107, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-fab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(15, 140, 107, 0.45);
+}
+
+.chat-panel {
+    position: fixed;
+    right: 20px;
+    bottom: 92px;
+    width: 320px;
+    max-width: calc(100vw - 40px);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 9999;
+    display: none;
+}
+
+.chat-panel.open {
+    display: block;
+    animation: chatFadeIn 0.25s ease;
+}
+
+.chat-header {
+    background: #0F8C6B;
+    color: #fff;
+    padding: 14px 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-body {
+    padding: 16px;
+    color: #333;
+    font-size: 14px;
+}
+
+.chat-messages {
+    max-height: 220px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.chat-bubble {
+    padding: 8px 10px;
+    border-radius: 12px;
+    max-width: 85%;
+    line-height: 1.35;
+}
+
+.chat-bubble.user {
+    align-self: flex-end;
+    background: #1BAA7D;
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.bot {
+    align-self: flex-start;
+    background: #f2f4f6;
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-body p {
+    margin: 0 0 10px;
+}
+
+.chat-input {
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 10px 12px;
+    outline: none;
+    font-size: 14px;
+}
+
+.chat-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+.chat-btn {
+    flex: 1;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.chat-btn.primary {
+    background: #1BAA7D;
+    color: #fff;
+}
+
+.chat-btn.secondary {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.chat-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+@keyframes chatFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+  </style>
+  <body class="style-6">
+    <!-- Preloader -->
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+
+    <!-- Header -->
+    <header class="mt-4">
+      <!-- Navigation Bar -->
+    <div class="navigation">
+      <div class="container">
+        <div class="navigation-content shadow px-6 rounded">
+          <nav class="navbar navbar-default navbar-sticky-function navbar-arrow">
+            <div class="logo">
+            <div id="navbar" >
+              <a href="/index/"> <img alt="Image" align="left"  style="height:90px;width:200px" src="{% static 'images/Yatra-01.png' %}"></a>
+              <ul class="nav navbar-nav" id="responsive-menu">
+                <li class="active">
+                  <a href="/index/">Home </a>
+                  <!-- <ul>
+                    <li>
+                      <a href="#">Travel</a>
+                      <ul> -->
+                        <!-- <li><a href="/homeslider/">Home Slider</a></li> -->
+                        <!-- <li><a href="/index-banner/">Home Banner</a></li>
+                        <li><a href="/index-video/">Home Video</a></li>
+                      </ul>
+                    </li> -->
+                    <!-- <li><a href="index-1.html">Travel Style 2</a></li>
+                    <li><a href="index-2.html">Travel Style 3</a></li>
+                    <li><a href="index-3.html">Travel style 4</a></li>
+                    <li><a href="index-5.html">Travel style 5 <span class="fw-bold pink">(New)</span></a></li> -->
+                    <!-- <li><a href="/index-6/">Travel style 6 <span class="fw-bold pink">(New)</span></a></li>
+                    <li><a href="/travelsearch/">Travel Search</a></li>
+                  </ul> -->
+                </li>
+                 <!-- <li>
+                  <a href="#">Pages <i class="fa fa-angle-down"></i></a>
+                  <ul>
+                    <li>
+                      <a href="#">Destination</a>
+                      <ul>
+                         <li>
+                          <a href="#">Grid View</a>
+                          <ul> 
+                            
+                            <li><a href="/destination-sidebar/">Grid with sidebar</a></li>
+                           </ul> 
+                         </li> 
+                        </li> 
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="tour-detail.html">Detail Default</a>
+                      <ul>
+                        <li><a href="/tour-detail/">Detail Default</a></li>
+                        <li><a href="/detail-tabs/">Detail Tabs</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="booking.html">Booking & Payment</a>
+                      <ul>
+                        <li><a href="/booking/">Booking Page</a></li>
+                        <li><a href="/booking-confirmation/">Booking Confirmation</a></li>
+                        <li><a href="/payment/">Payment Page</a></li>
+                      </ul>
+                    </li>
+                    
+                  
+                    <li><a href="/aboutus/">About Page</a></li>
+                    <li><a href="/contactus/">Contact Us</a></li>
+                  </ul>
+                </li> -->
+                <li>
+                  <a href="/aboutus/">About Us</a>
+                </li>
+                <li>
+                  <a href="/contactus/">Contact Us</a>
+                </li>
+                <li>
+                  <a href="/destination/"> destination </a>
+                  <!-- <ul>
+                    <li><a href="/flight/">Flight Homepage</a></li>
+                    <li><a href="/flight-grid-view/">Grid View</a></li>
+                    <li><a href="/flight-list-view/">List View</a></li>
+                    <li><a href="/flight-detail/">Detail Page</a></li>
+                    <li><a href="/flight-booking/">Booking</a></li>
+                    <li><a href="/flight-confirm/">Thank You</a></li>
+                  </ul> -->
+                </li>
+                <!-- <li>
+                  <a href="#"><i class="fa fa-star"></i> Cars<i class="fa fa-angle-down"></i></a>
+                  <ul>
+                    <li><a href="/car-grid-view/">Car Grid View</a></li>
+                    <li><a href="/car-list-view/">Car List View</a></li>
+                    <li><a href="/car-detail/">Car Detail Page</a></li>
+                    <li><a href="/car-booking/">Payment</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-star"></i> Cruise<i class="fa fa-angle-down"></i></a>
+                  <ul>
+                    <li><a href="/cruise-grid-view/">Cruise Grid View</a></li>
+                    <li><a href="/cruise-list-view/">Cruise List View</a></li>
+                    <li><a href="/cruise-detail/">Cruise Detail Page</a></li>
+                    <li><a href="/cruise-booking/">Payment</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Dashboard <i class="fa fa-angle-down"></i></a>
+                  <ul>
+                    <li><a href="/dashboard/">Dashboard</a></li>
+                    <li><a href="/dashboard-my-profile/">Dashboard Profile</a></li>
+                    <li><a href="/dashboard-booking/">Dashboard Bookings</a></li>
+                    <li><a href="/dashboard-history/">Dashboard History</a></li>
+                    <li><a href="/dashboard-list/">Dashboard Listing</a></li>
+                    <li><a href="/dashboard-addtour/">Dashboard Add Tour</a></li>
+                    <li><a href="/dashboard-reviews/">Dashboard Reviews</a></li>
+                  </ul>
+                </li> -->
+                <!-- <li>
+                  <a href="#">Shop <i class="fa fa-angle-down"></i></a>
+                  <ul>
+                    <li><a href="/shop/">Shop List</a></li>
+                    <li><a href="/shop-detail/">Shop Detail</a></li>
+                    <li><a href="/cart/">Cart</a></li>
+                    <li><a href="/checkout/">Checkout</a></li> -->
+                    <!-- <li><a href="/login/">Login Page</a></li> -->
+                    <!-- <li><a href="/login/">Login</a></li>
+                     <li><a href="/register/">Register</a>
+                      </li>
+                    <li><a href="/forgot-password/">Forgot Password</a></li>
+                  </ul>
+                </li> -->
+                <li>
+                  <a href="/blog-details/">Blog
+                     <!-- <i class="fa fa-angle-down"></i> -->
+                    </a> 
+                  <!-- <ul> -->
+                    <!-- <li><a href="/blog-list/">Blog Right Sidebar</a></li>
+                    <li><a href="/blog-list-1/">Blog Left Sidebar</a></li>
+                    <li><a href="/blog-list-2/">Blog Fullwidth</a></li>
+                    <li><a href="/blog-list-3/">Blog List</a></li>
+                    <li><a href="/blog-grid/">Blog Grid</a></li>
+                    <li><a href="/blog-detail/">Blog Detail Right Sidebar</a></li> -->
+                    <!-- <li><a href="/blog-details/">Blog Detail Fullwidth</a></li>
+                  </ul> -->
+                </li>
+              </ul>
+              <ul class="navbar-nav ms-auto align-items-center">
+
+    {% if user.is_authenticated %}
+        <li class="nav-item me-3">
+            <span class="welcome-text">
+                Welcome, {{ user.username }}
+            </span>
+        </li>
+        <li align="right" style="height:50px,width=200px">
+          <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link p-0" style="text-decoration:none;">Logout</button>
+          </form>
+        </li>
+
+        <!-- <li class="nav-item" align='right'  style="height:50px;width:200px">
+            <a class="nav-btn logout-btn"
+               href="{% url 'logout' %}">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+            </a>
+        </li> -->
+
+    {% else %}
+    <li>
+                  <a  href="{% url 'login' %}"> Login </a>
+    </li>
+        <!-- <li class="nav-item" align='right'  style="height:50px;width:200px">
+            <a class="nav-btn login-btn"
+               href="{% url 'login' %}">
+                <i class="fas fa-sign-in-alt me-1"></i> Login
+            </a>
+        </li> -->
+    {% endif %}
+
+</ul>
+
+            <!-- <div class="nav-login-btn pull-right">
+              <a href="/login/" style="align:right" class="btn btn-primary">
+                <i class="fa fa-sign-in" style="height:5px;width:15px" ></i> Login
+              </a>
+            </div>  -->
+            
+            <div id="slicknav-mobile">
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!-- Navigation Bar Ends -->
+
+    </header>
+    <!-- Header Ends -->
+     {% block content %}
+     {% endblock %}
+     <!-- Footer -->
+    <footer>
+      <div class="footer-upper">
+        <div class="container">
+          <div class="instagram-slider py-8">
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta1.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta2.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta3.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+             <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta4.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta5.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta6.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta7.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta8.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta9.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+            <div class="image-container mx-2 position-relative">
+              <a href="https://www.instagram.com/yatra"><img src="{% static 'images/insta6.jpg' %}" alt="Image" class="rounded"></a>
+            </div>
+          </div>
+          <div class="footer-links pt-0 border-0">
+            <div class="row gx-0 gx-md-5 gy-5">
+              <div class="col-lg-6">
+                <div class="footer-about footer-margin">
+                  <div class="footer-qoute text-center text-lg-start">
+                    <h2 class="white text-capitalize">Travel beyond your imagination, with our travel agency !</h2>
+                    <a href="/booking/" class="btn-blue btn-red rounded">Book A Tour</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="footer-links-list footer-margin text-center text-lg-start">
+                  <h3 class="mb-4">Browse Tour</h3>
+                  <ul>
+                    <li class="mb-2">
+                      <a href="#">Cyclades <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="#">North Ionian <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="#">Sporades <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="mb-2"> 
+                      <a href="/destination/">View all Destinations <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="footer-links-listw text-center text-lg-start">
+                  <div class="footer-contact">
+                    <h3 class="mb-4">Contact Us</h3>
+                    <div class="about-location">
+                      <ul class="d-block">
+                        <li class="mb-2"><i class="flaticon-maps-and-flags" aria-hidden="true"></i> Location</li>
+                        <li class="mb-2"><i class="flaticon-phone-call"></i> 7984611211 </li>
+                        <li><i class="flaticon-mail"></i> <a href="https://htmldesigntemplates.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ee9a819b9c809a9c8f988b82ae9a8b9d9a838f8782c08d8183">[email&#160;protected]</a></li>
+                      </ul>
+                    </div>
+                    <div class="footer-social-links">
+                      <ul>
+                        <li class="social-icon me-2">
+                          <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="social-icon me-2">
+                          <a href="https://www.instagram.com/yatra"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <!-- <a href="https://www.instagram.com/yatra" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a> -->
+                        <li class="social-icon me-2">
+                          <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="social-icon me-2">
+                          <a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="social-icon">
+                          <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-qoute text-center pb-7">
+            <div class="about-logo">
+              <img src="{% static 'images/Yatra-white.png' %}" alt="Image">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <div class="copyright-content py-1">
+                <p>
+                  2026<i class="fa fa-copyright" aria-hidden="true"></i> Yatra by <a href="https://www.cyclonethemes.com/" target="_blank">Cyclone Themes</a>
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="payment-content py-1">
+                <ul>
+                  <li>We Accept</li>
+                  <li class="ms-2">
+                    <img src="{% static 'images/payment1.png' %}" alt="Image">
+                  </li>
+                  <li class="ms-2">
+                    <img src="{% static 'images/payment2.png' %}" alt="Image">
+                  </li>
+                  <li class="ms-2">
+                    <img src="{% static 'images/payment3.png' %}" alt="Image">
+                  </li>
+                  <li class="ms-2">
+                    <img src="{% static 'images/payment4.png' %}" alt="Image">
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- Back to top start -->
+    <div id="back-to-top">
+      <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+
+    <!-- Chat Widget -->
+    <div id="chat-panel" class="chat-panel" data-phone="7984611211">
+      <div class="chat-header">
+        <span>Chat with us</span>
+        <button class="chat-close" id="chat-close" aria-label="Close chat">×</button>
+    </div>
+      <div class="chat-body">
+        <div id="chat-messages" class="chat-messages">
+          <div class="chat-bubble bot">Hi! Ask your question and I will help.</div>
+        </div>
+        <input id="chat-message" class="chat-input" type="text" placeholder="Type your message..." />
+        <div class="chat-actions">
+          <button class="chat-btn primary" id="chat-send">Send</button>
+          <button class="chat-btn secondary" id="chat-call">Call</button>
+        </div>
+      </div>
+    </div>
+    <button id="chat-fab" class="chat-fab" aria-label="Open chat">
+      <i class="fa fa-comment"></i>
+    </button>
+
+    <!-- *Scripts* -->
+    <script data-cfasync="false" src="{% static '../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script><script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static '../../../cdn.jsdelivr.net/npm/lightgallery%402.5.0/plugins/video/lg-video.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main-1.js' %}"></script>
+    <script src="{% static 'js/jquery-modal-video.min.js' %}"></script>
+    <script src="{% static 'js/custom-video.js' %}"></script>
+    <script src="{% static 'js/preloader.js' %}"></script>
+    <script src="{% static 'js/video-lg.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+      (function() {
+        var panel = document.getElementById("chat-panel");
+        var fab = document.getElementById("chat-fab");
+        var closeBtn = document.getElementById("chat-close");
+        var sendBtn = document.getElementById("chat-send");
+        var callBtn = document.getElementById("chat-call");
+        var messageInput = document.getElementById("chat-message");
+        var messages = document.getElementById("chat-messages");
+
+        if (!panel || !fab) return;
+
+        var phone = panel.getAttribute("data-phone") || "";
+
+        function toggleChat(open) {
+          if (open) {
+            panel.classList.add("open");
+            messageInput && messageInput.focus();
+          } else {
+            panel.classList.remove("open");
+          }
+        }
+
+        fab.addEventListener("click", function() {
+          toggleChat(!panel.classList.contains("open"));
+        });
+
+        closeBtn && closeBtn.addEventListener("click", function() {
+          toggleChat(false);
+        });
+
+        function appendMessage(text, isUser) {
+          if (!messages) return;
+          var bubble = document.createElement("div");
+          bubble.className = "chat-bubble " + (isUser ? "user" : "bot");
+          bubble.textContent = text;
+          messages.appendChild(bubble);
+          messages.scrollTop = messages.scrollHeight;
+        }
+
+        function getAutoReplies(input) {
+          var msg = input.toLowerCase();
+          if (msg.includes("booking") || msg.includes("book")) {
+            return [
+              "Booking steps:",
+              "1) Open the Booking page.",
+              "2) Select your tour and dates.",
+              "3) Fill in traveler details.",
+              "4) Review the summary and submit."
+            ];
+          }
+          if (msg.includes("payment") || msg.includes("pay") || msg.includes("upi") || msg.includes("card")) {
+            return [
+              "Payment steps:",
+              "1) Complete your booking details.",
+              "2) Go to the Payment page.",
+              "3) Choose Card or UPI.",
+              "4) Confirm and wait for success message."
+            ];
+          }
+          if (msg.includes("contactus") || msg.includes("contact") || msg.includes("call") || msg.includes("phone")) {
+            return [
+              "Contact us steps:",
+              "1) Open the Contact Us page.",
+              "2) Fill your name, email, and message.",
+              "3) Click Submit.",
+              "Or call us at 7984611211."
+            ];
+          }
+          if (msg.includes("price") || msg.includes("cost") || msg.includes("rate")) {
+            return ["Prices depend on the package and dates. Tell me your destination and dates."];
+          }
+          if (msg.includes("refund") || msg.includes("cancel")) {
+            return ["Refunds depend on the package policy. Share your booking ID and I will help."];
+          }
+          return ["Thanks! I have noted your question. Please share more details."];
+        }
+
+        function handleSend() {
+          if (!messageInput) return;
+          var msg = messageInput.value.trim();
+          if (!msg) return;
+          appendMessage(msg, true);
+          messageInput.value = "";
+          var replies = getAutoReplies(msg);
+          replies.forEach(function(text, index) {
+            setTimeout(function() {
+              appendMessage(text, false);
+            }, 500 + (index * 450));
+          });
+        }
+
+        sendBtn && sendBtn.addEventListener("click", handleSend);
+        messageInput && messageInput.addEventListener("keydown", function(e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            handleSend();
+          }
+        });
+
+        callBtn && callBtn.addEventListener("click", function() {
+          if (!phone) return;
+          window.location.href = "tel:" + phone;
+        });
+      })();
+    </script>
+    <!-- LightGallery and Masonry.js Libraries -->
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b92458cba38e690',t:'MTc2NzYwODcyNg=='};var a=document.createElement('script');a.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/d39f91d70ce1/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"e2e296138d64407b8469055f5cbf0b42","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from htmldesigntemplates.com/html/yatra/index-6.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Jan 2026 10:27:21 GMT -->
+</html>
+

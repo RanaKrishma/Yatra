@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment Success</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; color: #222; line-height: 1.5;">
+    <h2 style="margin: 0 0 10px;">Payment Successful</h2>
+    <p style="margin: 0 0 16px;">
+      Thank you for your booking. Your payment has been processed successfully.
+    </p>
+
+    <h3 style="margin: 18px 0 8px;">Tour Details</h3>
+    <table cellpadding="6" cellspacing="0" border="0" style="border-collapse: collapse; width: 100%; max-width: 620px;">
+      <tr>
+        <td style="border-bottom: 1px solid #eee; width: 180px;"><strong>Tour</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ tour.tours_name }}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Duration</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ tour.duration }} days</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Persons</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ booking.persons }}</td>
+      </tr>
+      {% if booking.hotel %}
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Hotel</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ booking.hotel.name }}</td>
+      </tr>
+      {% endif %}
+      {% if booking.room %}
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Room</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ booking.room.room_type }}</td>
+      </tr>
+      {% endif %}
+      {% if booking.check_in %}
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Check In</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ booking.check_in }}</td>
+      </tr>
+      {% endif %}
+      {% if booking.check_out %}
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Check Out</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ booking.check_out }}</td>
+      </tr>
+      {% endif %}
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Contact Phone</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ booking.phone_number }}</td>
+      </tr>
+    </table>
+
+    <h3 style="margin: 18px 0 8px;">Payment Details</h3>
+    <table cellpadding="6" cellspacing="0" border="0" style="border-collapse: collapse; width: 100%; max-width: 620px;">
+      {% if invoice_number %}
+      <tr>
+        <td style="border-bottom: 1px solid #eee; width: 180px;"><strong>Invoice #</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ invoice_number }}</td>
+      </tr>
+      {% endif %}
+      <tr>
+        <td style="border-bottom: 1px solid #eee; width: 180px;"><strong>Base Price</strong></td>
+        <td style="border-bottom: 1px solid #eee;">INR {{ base_price }}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Room Price</strong></td>
+        <td style="border-bottom: 1px solid #eee;">INR {{ room_price }}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Subtotal</strong></td>
+        <td style="border-bottom: 1px solid #eee;">INR {{ subtotal }}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Discount</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ discount_percent }}% (INR {{ discount_amount }})</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>GST (10%)</strong></td>
+        <td style="border-bottom: 1px solid #eee;">INR {{ gst_amount }}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee; width: 180px;"><strong>Amount Paid</strong></td>
+        <td style="border-bottom: 1px solid #eee;">INR {{ amount }}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Order ID</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ order_id }}</td>
+      </tr>
+      <tr>
+        <td style="border-bottom: 1px solid #eee;"><strong>Payment ID</strong></td>
+        <td style="border-bottom: 1px solid #eee;">{{ payment_id }}</td>
+      </tr>
+    </table>
+
+    {% if invoice_url %}
+    <p style="margin-top: 12px;">
+      View/print your invoice: {{ invoice_url }}
+    </p>
+    {% endif %}
+
+    <p style="margin-top: 18px;">
+      If you have any questions, reply to this email or contact us at 7984611211.
+    </p>
+  </body>
+</html>

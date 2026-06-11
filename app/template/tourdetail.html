@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+body {
+  background: #f8f9fa;
+}
+
+.tourdetail {
+  padding: 60px 0;
+}
+
+/* LEFT IMAGE */
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+.slider img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: none;
+}
+
+.slider img.active {
+  display: block;
+}
+
+/* Slider buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
+.slider-btn:hover {
+  background: #000;
+}
+
+.slider-btn.prev { left: 15px; }
+.slider-btn.next { right: 15px; }
+
+/* RIGHT DETAILS */
+.tour-info-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.1);
+}
+
+.tour-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.tour-country {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  color: #777;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.book-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+}
+
+.review {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .slider img {
+    height: 280px;
+  }
+}
+</style>
+
+
+<section class="tourdetail">
+  <div class="container">
+    <div class="row align-items-start">
+
+      <!-- LEFT SIDE IMAGE -->
+      <div class="col-lg-6 mb-4">
+        <div class="slider">
+
+          <img src="{{ t2.tours_img.url }}" class="active">
+
+          {% if t2.tour_img2 %}
+          <img src="{{ t2.tour_img2.url }}">
+          {% endif %}
+
+          {% if t2.tour_img3 %}
+          <img src="{{ t2.tour_img3.url }}">
+          {% endif %}
+
+          <button class="slider-btn prev" onclick="prevSlide()">❮</button>
+          <button class="slider-btn next" onclick="nextSlide()">❯</button>
+        </div>
+      </div>
+
+
+      <!-- RIGHT SIDE DETAILS -->
+      <div class="col-lg-6">
+        <div class="tour-info-box">
+
+          <h6 class="tour-country">{{ t2.country.name }}</h6>
+          <h2 class="tour-title mb-3">{{ t2.tours_name }}</h2>
+
+          <p><strong>Duration:</strong> {{ t2.duration }}</p>
+          <p><strong>Includes:</strong> {{ t2.include }}</p>
+
+          <p>
+            <strong>Rating:</strong>
+            {% for i in "12345" %}
+              {% if forloop.counter <= t2.rating %}
+                <i class="fa fa-star text-warning"></i>
+              {% else %}
+                <i class="fa fa-star-o text-warning"></i>
+              {% endif %}
+            {% endfor %}
+          </p>
+
+          <hr>
+
+          <div class="price mb-3">₹{{ t2.rate }}</div>
+
+          <a href="/booking/{{ t2.id }}/" class="btn btn-success book-btn mb-4">
+            Book Now
+          </a>
+
+          <h5 class="mb-3">Customer Reviews</h5>
+
+          <div class="review">
+            <strong>Tanishq Prajapati</strong>
+            <p>Fantastic experience! Well organized tour.</p>
+          </div>
+
+          <div class="review">
+            <strong>Anjali Mehta</strong>
+            <p>Worth every rupee. Highly recommended.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const paymentForm = document.getElementById('paymentForm');
+        const errorsDiv = document.getElementById('errors');
+        const totalAmount = {{ total_amount }} * 100; // Convert to paise
+ 
+        paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+ 
+            // Get selected payment method
+            const selectedPaymentMethod = document.querySelector('input[name="payment_method"]:checked');
+ 
+            if (!selectedPaymentMethod) {
+                errorsDiv.textContent = "Please select a payment method.";
+                return;
+            }
+ 
+            const paymentMethod = selectedPaymentMethod.value;
+ 
+            if (paymentMethod === 'razorpay') {
+                const options = {
+                    key: "rzp_test_bilBagOBVTi4lE", // Replace with your Razorpay key
+                    amount: totalAmount, // Example amount, in paise
+                    currency: "INR",
+                    name: "Your Company Name",
+                    description: "Purchase Description",
+                    handler: function(response) {
+                        // Handle successful payment
+                        alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+                        // Optionally, submit the form with additional data (like payment ID)
+                        paymentForm.submit();
+                    },
+                    prefill: {
+                        name: "{{ request.user }}",
+                        email: "{{ request.user.email }}",
+                        contact: "{{ request.user.profile.number }}" // Use appropriate field
+                    },
+                    theme: {
+                        color: "#3399cc"
+                    }
+                };
+ 
+                const rzp = new Razorpay(options);
+                rzp.open();
+            } else {
+                // Proceed with cash on delivery
+                paymentForm.submit();
+            }
+        });
+    });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slider img');
+
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+
+  window.nextSlide = function () {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  window.prevSlide = function () {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+"key" : "YOUR_RAZORPAY_KEY"
+
+});
+</script>
+
+{% endblock %}

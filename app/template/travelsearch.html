@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+  {% load static%}
+<!-- Mirrored from htmldesigntemplates.com/html/yatra/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Jan 2026 10:27:21 GMT -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Yatra - Travel Agency HTML Template</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo1.png" />
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!--Custom CSS-->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <!--Flaticons CSS-->
+    <link href="{% static 'font/flaticon.css' %}" rel="stylesheet" type="text/css" />
+    <!--Plugin CSS-->
+    <link href="{% static 'css/plugin.css' %}" rel="stylesheet" type="text/css" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="{% static '../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}" />
+  </head>
+  <body class="style-tab">
+    <!-- Preloader -->
+    <div id="preloader">
+      <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+
+    <div class="main-slider-1">
+      <div class="main-slider-inner">
+        <div class="container">
+          <div class="block-box">
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <div class="logo-tab">
+                  <a href="index.html"><img alt="Image" src="{% static 'images/Yatra-white.png' %}" class="logo-white" /></a>
+                </div>
+              </div>
+              <div class="col-lg-6"></div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-6">
+                <div class="main-tab-sec">
+                  <ul class="search-tabs nav nav-pills">
+                    <li>
+                      <a class="active" data-bs-toggle="pill" data-bs-target="#search-1" role="tab" aria-controls="pills-1" aria-selected="true">
+                        Hotels <span class="fsz-13">Search your ideal hotels</span>
+                      </a>
+                      <i class="fa fa-building-o icon theme-color-bg"></i>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-2" role="tab" aria-controls="pills-2" aria-selected="true">
+                        Vacation <span class="fsz-13"> Find the best Places </span>
+                      </a>
+                      <i class="fa fa-leaf icon theme-color-bg"></i>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-3" role="tab" aria-controls="pills-3" aria-selected="true">
+                        Flights <span class="fsz-13"> Ideal and cheap flight </span>
+                      </a>
+                      <i class="fa fa-plane icon theme-color-bg"></i>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-4" role="tab" aria-controls="pills-4" aria-selected="true">
+                        Car <span class="fsz-13"> Awesome place in the world </span>
+                      </a>
+                      <i class="fa fa-car icon theme-color-bg"></i>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-5" role="tab" aria-controls="pills-5" aria-selected="true">
+                        Cruises <span class="fsz-13"> Awesome place in the world </span>
+                      </a>
+                      <i class="fa fa-ship icon theme-color-bg"></i>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mobile-tab">
+                  <ul class="search-tabs nav nav-pills">
+                    <li>
+                      <a class="active" data-bs-toggle="pill" data-bs-target="#search-1" role="tab" aria-controls="pills-1" aria-selected="true">
+                        Hotels <br /><i class="fa fa-building-o icon theme-color-bg"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-2" role="tab" aria-controls="pills-2" aria-selected="true">
+                        Vacation <br /><i class="fa fa-leaf icon theme-color-bg"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-3" role="tab" aria-controls="pills-3" aria-selected="true">
+                        Flights <br /><i class="fa fa-plane icon theme-color-bg"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-4" role="tab" aria-controls="pills-4" aria-selected="true">
+                        Car <br /><i class="fa fa-car icon theme-color-bg"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="" data-bs-toggle="pill" data-bs-target="#search-5" role="tab" aria-controls="pills-5" aria-selected="true">
+                        Cruises <br /><i class="fa fa-ship icon theme-color-bg"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6">
+                <div class="tab-content">
+                  <div class="tab-pane fade active show" id="search-1">
+                    <div class="search-wrap">
+                      <form class="search-form" method="post">
+                        <div class="row">
+                          <div class="form-group mb-3 col-md-12 col-sm-12">
+                            <input placeholder="Destinations or hotel name..." required="" class="form-control name input-your-name" type="text" />
+                            <span class="fa fa-user theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input class="form-control" id="datetimepicker1" data-date-format="dd-mm-yyyy" placeholder="Check in" type="text" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input class="form-control" id="datetimepicker2" data-date-format="dd-mm-yyyy" type="text" placeholder="Check out" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <select class="wide">
+                              <option>Standart Room</option>
+                              <option>Dulex Room</option>
+                              <option>Premium Room,</option>
+                              <option>Standart Room</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6 persons clearfix">
+                            <select class="wide">
+                              <option>1 Adults</option>
+                              <option>2 Adults</option>
+                              <option>3 Adults</option>
+                              <option>4 Adults</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-lg-6">
+                            <button class="btn-blue" data-width="100%" type="submit">SEARCH NOW</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="search-2">
+                    <div class="search-wrap">
+                      <form class="search-form" method="post">
+                        <div class="row">
+                          <div class="form-group mb-3 col-lg-6">
+                            <input placeholder="Flying From..." required="" class="form-control" type="text" />
+                            <span class="fa fa-map-marker"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input placeholder="Flying To..." required="" class="form-control" type="text" />
+                            <span class="fa fa-map-marker"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input class="form-control" id="datetimepicker3" data-date-format="dd-mm-yyyy" placeholder="Check in" type="text" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input class="form-control" id="datetimepicker4" data-date-format="dd-mm-yyyy" type="text" placeholder="Check out" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <select class="wide">
+                              <option>Standart Room</option>
+                              <option>Dulex Room</option>
+                              <option>Premium Room,</option>
+                              <option>Standart Room</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6 persons clearfix">
+                            <select class="wide">
+                              <option>1 Adults</option>
+                              <option>2 Adults</option>
+                              <option>3 Adults</option>
+                              <option>4 Adults</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-lg-6">
+                            <button class="btn-blue" data-width="100%" type="submit">SEARCH NOW</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="search-3">
+                    <div class="search-wrap">
+                      <form class="search-form" method="post">
+                        <div class="row">
+                          <div class="form-group mb-3 col-lg-6">
+                            <input placeholder="From..." required="" class="form-control" type="text" />
+                            <span class="fa fa-map-marker theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input placeholder="To..." required="" class="form-control border" type="text" />
+                            <span class="fa fa-map-marker theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input class="form-control" id="datetimepicker5" required="" data-date-format="dd-mm-yyyy" placeholder="Depart" type="text" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input class="form-control" id="datetimepicker6" required="" data-date-format="dd-mm-yyyy" type="text" placeholder="Return" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6 clearfix">
+                            <select class="wide">
+                              <option>1 Guest</option>
+                              <option>2 Guests</option>
+                              <option>3 Guests</option>
+                              <option>4 Guests</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6 clearfix">
+                            <select class="wide">
+                              <option>Economy</option>
+                              <option>Premium Economy</option>
+                              <option>Business</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-lg-6">
+                            <button class="btn-blue" data-width="100%" type="submit">SEARCH NOW</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="search-4">
+                    <div class="search-wrap">
+                      <form class="search-form" method="post">
+                        <div class="row">
+                          <div class="form-group mb-3 col-lg-6">
+                            <input placeholder="Picking Up..." required="" class="form-control" type="text" />
+                            <span class="fa fa-car"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input placeholder="Dropping Off..." required="" class="form-control" type="text" />
+                            <span class="fa fa-car"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input class="form-control" id="datetimepicker7" data-date-format="dd-mm-yyyy" placeholder="Pick up date" type="text" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <select class="wide">
+                              <option>12:00 AM</option>
+                              <option>12:30 AM</option>
+                              <option>01:00 AM</option>
+                              <option>01:30 AM</option>
+                              <option>02:00 AM</option>
+                              <option>02:30 AM</option>
+                              <option>03:00 AM</option>
+                              <option>03:30 AM</option>
+                              <option>04:00 AM</option>
+                              <option>04:30 AM</option>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <input type="type" id="datetimepicker8" class="form-control" data-date-format="dd-mm-yyyy" placeholder="Drop off date" />
+                            <span class="fa fa-calendar theme-color"></span>
+                          </div>
+                          <div class="form-group mb-3 col-lg-6">
+                            <select class="wide">
+                              <option>12:00 AM</option>
+                              <option>12:30 AM</option>
+                              <option>01:00 AM</option>
+                              <option>01:30 AM</option>
+                              <option>02:00 AM</option>
+                              <option>02:30 AM</option>
+                              <option>03:00 AM</option>
+                              <option>03:30 AM</option>
+                              <option>04:00 AM</option>
+                              <option>04:30 AM</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-lg-6">
+                            <button class="btn-blue" data-width="100%" type="submit">SEARCH NOW</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="search-5">
+                    <div class="search-wrap">
+                      <form class="search-form" method="post">
+                        <div class="row">
+                          <div class="form-group mb-3 col-sm-12">
+                            <select class="wide">
+                              <option selected="">Going On</option>
+                              <optgroup label="Most Popular">
+                                <option>Caribbean</option>
+                                <option>Bahamas</option>
+                                <option>Mexico</option>
+                                <option>Alaska</option>
+                                <option>Europe</option>
+                              </optgroup>
+                              <optgroup label="Other Destinations">
+                                <option>Africa</option>
+                                <option>Arctic/Antartctic</option>
+                                <option>Asia</option>
+                                <option>Australia/New Zealand</option>
+                                <option>Central America</option>
+                                <option>Cruise to Nowhere</option>
+                                <option>Galapagos</option>
+                              </optgroup>
+                            </select>
+                          </div>
+                          <div class="form-group mb-3 col-sm-12">
+                            <select class="wide">
+                              <option selected="">Departures</option>
+                              <option>October 2013</option>
+                              <option>November 2013</option>
+                              <option>December 2013</option>
+                              <option>January 2014</option>
+                              <option>February 2014</option>
+                              <option>March 2014</option>
+                              <option>April 2014</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-lg-6">
+                            <button class="btn-blue" data-width="100%" type="submit">SEARCH NOW</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <div class="footer">
+                  <ul class="social-icons">
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-google-plus"></a></li>
+                    <li><a href="#" class="fa fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-behance"></a></li>
+                  </ul>
+                  <div class="copyright-content">
+                    <p>
+                      2019 <i class="fa fa-copyright" aria-hidden="true"></i> Yatra by
+                      <a href="https://www.cyclonethemes.com/" target="_blank">Cyclone Themes</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to top start -->
+    <div id="back-to-top">
+      <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+
+    <!-- *Scripts* -->
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/preloader.js' %}"></script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b92458e0f1c18ae',t:'MTc2NzYwODcyNg=='};var a=document.createElement('script');a.src='../../cdn-cgi/challenge-platform/h/g/scripts/jsd/d39f91d70ce1/maind41d.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"e2e296138d64407b8469055f5cbf0b42","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+<!-- Mirrored from htmldesigntemplates.com/html/yatra/index-4.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Jan 2026 10:27:21 GMT -->
+</html>

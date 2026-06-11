@@ -1,0 +1,166 @@
+ {% extends 'base.html' %}
+ {% block content %}
+  {% load static %}
+ <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+      <div class="container">
+        <div class="breadcrumb-content">
+          <h2>Booking Confirmed</h2>
+          <nav aria-label="breadcrumb">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Destinations</a></li>
+              <li class="breadcrumb-item"><a href="#">Bahamas Cruises</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Booking</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="section-overlay"></div>
+    </section>
+    <!-- BreadCrumb Ends -->
+
+    <section class="booking">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="booking-confirmed booking-outer">
+              <div class="confirmation-title">
+                <div class="form-title form-title-1">
+                  <h2>Congratulations your booking has been confirmed</h2>
+                </div>
+                <p>A confirmation email has been sent to your provided email address.</p>
+                <div class="payment-info detail">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="confirmation-details detail">
+                        <h3>Booking Details</h3>
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="title">Booking ID</td>
+                              <td class="b-id">51AE8</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Name</td>
+                              <td>Meghan Traitor</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Email</td>
+                              <td><a href="https://htmldesigntemplates.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f4959697b48c8d8eda979b99">[email&#160;protected]</a></td>
+                            </tr>
+                            <tr>
+                              <td class="title">Phone Number</td>
+                              <td>XXXX-XXXXXX</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Gender</td>
+                              <td>Male</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Nationality</td>
+                              <td>Malay</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Arrival Date</td>
+                              <td>13 August 2019</td>
+                            </tr>
+                            <tr>
+                              <td class="title">Departure Date</td>
+                              <td>21 August 2019</td>
+                            </tr>
+                            <tr>
+                              <td class="title">No of Tickets</td>
+                              <td>7</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="make-payment">
+                <div class="form-title form-title-1">
+                  <h2>Payment</h2>
+                </div>
+                <p>Your booking is confirmed but payment is due. Make your payment and make your 100% reservation.</p>
+                <a href="payment.html" class="btn-blue btn-red">Make Payment</a>
+              </div>
+            </div>
+          </div>
+          <div id="sidebar-sticky" class="col-lg-4">
+            <aside class="detail-sidebar sidebar-wrapper">
+              <div class="sidebar-item">
+                <div class="detail-title">
+                  <h3>Popular Packages</h3>
+                </div>
+                <div class="sidebar-content sidebar-slider">
+                  <div class="sidebar-package">
+                    <div class="sidebar-package-image">
+                      <img src="{% static 'images/detailslider1.jpg' %}" alt="image" />
+                    </div>
+                    <div class="destination-content sidebar-package-content">
+                      <h4><a href="tour-detail.html">Royal Caribbean Cruises</a></h4>
+                      <div class="deal-rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                      </div>
+                      <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                  <div class="sidebar-package">
+                    <div class="sidebar-package-image">
+                      <img src="{% static 'images/detailslider2.jpg' %}" alt="Images" />
+                    </div>
+                    <div class="destination-content sidebar-package-content">
+                      <h4><a href="tour-detail.html">Bahamas Royal Cruises</a></h4>
+                      <div class="deal-rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                      </div>
+                      <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                  <div class="sidebar-package">
+                    <div class="sidebar-package-image">
+                      <img src="{% static 'images/detailslider3.jpg' %}" alt="Images" />
+                    </div>
+                    <div class="destination-content sidebar-package-content">
+                      <h4><a href="tour-detail.html">Royal Caribbean Cruises</a></h4>
+                      <div class="deal-rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star-o"></span>
+                        <span class="fa fa-star-o"></span>
+                      </div>
+                      <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sidebar-item sidebar-helpline">
+                <div class="sidebar-helpline-content">
+                  <h3>Any Questions?</h3>
+                  <p>Lorem ipsum dolor sit amet, consectet ur adipiscing elit, sedpr do eiusmod tempor incididunt ut.</p>
+                  <p><i class="flaticon-phone-call"></i> (012)-345-6789</p>
+                  <p><i class="flaticon-mail"></i> <a href="https://htmldesigntemplates.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ff8b908a8d918b8d9e899a93bf8b9a8c8b929e9693d19c9092">[email&#160;protected]</a></p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}

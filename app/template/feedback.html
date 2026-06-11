@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Breadcrumb -->
+<section class="breadcrumb-outer text-center">
+  <div class="container">
+    <div class="breadcrumb-content">
+      <h2>Customer Feedback</h2>
+    </div>
+  </div>
+  <div class="section-overlay"></div>
+</section>
+<!-- Breadcrumb End -->
+
+<!-- Feedback Section -->
+<section class="item-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+
+        <div class="item-wrapper">
+
+          <div class="cover-content text-center">
+            <h2>Share Your Travel Experience</h2>
+            <p>We value your feedback about our tours and travel services.</p>
+          </div>
+
+          <div class="item-detail">
+
+            <form method="post">
+              {% csrf_token %}
+
+              <div class="row">
+
+                <div class="form-group col-lg-6 mb-3">
+                  <label>Your Name</label>
+                  <input type="text" class="form-control" name="name" required>
+                </div>
+
+                <div class="form-group col-lg-6 mb-3">
+                  <label>Email</label>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+
+                <div class="form-group col-lg-12 mb-3">
+                  <label>Rating</label>
+                  <div class="star-rating">
+                    <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                    <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                    <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                    <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                    <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+                  </div>
+                </div>
+
+                <div class="form-group col-lg-12 mb-3">
+                  <label>Your Feedback</label>
+                  <textarea class="form-control" name="message" rows="5" required></textarea>
+                </div>
+
+                <div class="col-lg-12 text-center">
+                  <button type="submit" class="btn-blue btn-red">
+                    Submit Feedback
+                  </button>
+                </div>
+
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.star-rating{
+display:flex;
+flex-direction:row-reverse;
+justify-content:flex-end;
+}
+
+.star-rating input{
+display:none;
+}
+
+.star-rating label{
+font-size:28px;
+color:#ccc;
+cursor:pointer;
+}
+
+.star-rating input:checked ~ label{
+color:gold;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label{
+color:gold;
+}
+</style>
+
+{% endblock %}

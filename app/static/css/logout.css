@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+    ),
+    url('travel-bg.jpg') center/cover no-repeat;
+    height: 100vh;
+}
+
+.logout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.logout-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.logout-card h1 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.logout-card p {
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.login-btn {
+    background: #1abc9c;
+    color: white;
+}
+
+.login-btn:hover {
+    background: #16a085;
+}
+
+.home-btn {
+    background: #3498db;
+    color: white;
+}
+
+.home-btn:hover {
+    background: #2980b9;
+}

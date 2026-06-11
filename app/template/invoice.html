@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="invoice-page">
+  <div class="container">
+    <div class="invoice-card">
+      <div class="invoice-header">
+        <div>
+          <h2>Invoice</h2>
+          <p class="muted">Thank you for your booking.</p>
+        </div>
+        <div class="invoice-meta">
+          <div><strong>Invoice #</strong> {{ invoice_number }}</div>
+          {% if invoice_created_at %}
+          <div><strong>Date</strong> {{ invoice_created_at|date:"Y-m-d H:i" }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="invoice-section">
+        <h4>Customer</h4>
+        <p>
+          {{ booking.first_name }} {{ booking.last_name }}<br>
+          {{ booking.email }}<br>
+          {{ booking.phone_number }}
+        </p>
+      </div>
+
+      <div class="invoice-section">
+        <h4>Tour Details</h4>
+        <table class="invoice-table">
+          <tr><td>Tour</td><td>{{ tour.tours_name }}</td></tr>
+          <tr><td>Duration</td><td>{{ tour.duration }} days</td></tr>
+          <tr><td>Persons</td><td>{{ booking.persons }}</td></tr>
+          {% if booking.hotel %}<tr><td>Hotel</td><td>{{ booking.hotel.name }}</td></tr>{% endif %}
+          {% if booking.room %}<tr><td>Room</td><td>{{ booking.room.room_type }}</td></tr>{% endif %}
+          {% if booking.check_in %}<tr><td>Check In</td><td>{{ booking.check_in }}</td></tr>{% endif %}
+          {% if booking.check_out %}<tr><td>Check Out</td><td>{{ booking.check_out }}</td></tr>{% endif %}
+        </table>
+      </div>
+
+      <div class="invoice-section">
+        <h4>Payment Details</h4>
+        <table class="invoice-table">
+          <tr><td>Base Price</td><td>INR {{ base_price }}</td></tr>
+          <tr><td>Room Price</td><td>INR {{ room_price }}</td></tr>
+          <tr><td>Subtotal</td><td>INR {{ subtotal }}</td></tr>
+          <tr><td>Discount ({{ discount_percent }}%)</td><td>INR {{ discount_amount }}</td></tr>
+          <tr><td>GST (10%)</td><td>INR {{ gst_amount }}</td></tr>
+          <tr class="total"><td>Amount Paid</td><td>INR {{ amount }}</td></tr>
+          <tr><td>Payment ID</td><td>{{ payment_id }}</td></tr>
+        </table>
+      </div>
+
+      <div class="invoice-actions">
+        <button onclick="window.print()" class="btn-print">Print / Save PDF</button>
+        <a href="{% url 'feedback' %}" class="btn-feedback">Share Feedback</a>
+        {% if not booking.is_cancelled %}
+          <a href="{% url 'cancel_booking' booking.id %}" class="btn-cancel">Cancel Booking</a>
+        {% else %}
+          <button class="btn-cancelled" disabled>Booking Cancelled</button>
+        {% endif %}
+      </div>
+      <div class="invoice-note">
+        <p>Your invoice will automatically redirect to the feedback page in <span id="countdown">10</span> seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var countdown = 10;
+  var countdownEl = document.getElementById('countdown');
+  var interval = setInterval(function() {
+    countdown -= 1;
+    if (countdownEl) {
+      countdownEl.textContent = countdown;
+    }
+    if (countdown <= 0) {
+      clearInterval(interval);
+      window.location.href = "{% url 'feedback' %}";
+    }
+  }, 1000);
+</script>
+
+<style>
+.invoice-page {
+  padding: 60px 0;
+  background: linear-gradient(135deg, #f7f7fb, #eef2ff);
+  min-height: 100vh;
+}
+.invoice-card {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  padding: 28px 32px;
+}
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+.invoice-meta {
+  text-align: right;
+  font-size: 14px;
+}
+.muted { color: #666; margin: 6px 0 0; }
+.invoice-section { margin-bottom: 18px; }
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.invoice-table td {
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+.invoice-table tr.total td {
+  font-weight: 700;
+  color: #0d6efd;
+}
+.invoice-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.btn-print {
+  background: #0d6efd;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+.btn-print:hover {
+  background: #0a58ca;
+}
+.btn-feedback {
+  background: #28a745;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+.btn-feedback:hover {
+  background: #218838;
+  text-decoration: none;
+}
+.btn-cancel {
+  background: #dc3545;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+.btn-cancel:hover {
+  background: #c82333;
+  text-decoration: none;
+}
+.btn-cancelled {
+  background: #6c757d;
+  border: none;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: not-allowed;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+@media (max-width: 640px) {
+  .invoice-header { flex-direction: column; align-items: flex-start; }
+  .invoice-meta { text-align: left; }
+}
+</style>
+{% endblock %}

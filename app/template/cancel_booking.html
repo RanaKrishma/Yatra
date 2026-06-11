@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="breadcrumb-outer text-center">
+  <div class="container">
+    <div class="breadcrumb-content">
+      <h2>Cancel Booking</h2>
+      <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="{% url 'my_bookings' %}">My Bookings</a></li>
+        <li class="active">Cancel Booking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cancel-booking">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="cancel-form">
+          <h2 style="color: #d32f2f; margin-bottom: 20px;">Cancel Booking</h2>
+          
+          <div class="booking-info" style="background: #f9f9f9; padding: 15px; border-left: 4px solid #d32f2f; margin-bottom: 20px; border-radius: 4px;">
+            <p><strong>Tour:</strong> {{ booking.tour.tours_name }}</p>
+            <p><strong>Booking ID:</strong> {{ booking.id }}</p>
+            <p><strong>Tour Duration:</strong> {{ booking.tour.duration }} days</p>
+            <p><strong>Number of Persons:</strong> {{ booking.persons }}</p>
+            <p><strong>Total Amount:</strong> ₹{{ booking.total_amount }}</p>
+            <p><strong>Booking Date:</strong> {{ booking.booked_at|date:"d M Y, h:i A" }}</p>
+          </div>
+
+          <div class="warning-box" style="background: #fff3cd; padding: 15px; border-radius: 4px; margin-bottom: 20px; border-left: 4px solid #ff9800;">
+            <h4 style="color: #ff6f00; margin-top: 0;">⚠️ Important Notice</h4>
+            <p style="margin: 0; font-size: 14px;">Once you cancel this booking, it cannot be undone. Please note any refund policies that may apply.</p>
+          </div>
+
+          <!-- Cancellation Policy Section -->
+          <div class="cancellation-policy" style="background: #f0f4f8; padding: 20px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #1976d2;">
+            <h4 style="color: #1565c0; margin-top: 0; margin-bottom: 15px;">💰 Refund Policy</h4>
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr style="background: #1976d2; color: white;">
+                  <th style="padding: 12px; text-align: left; border: 1px solid #1565c0;">Cancellation Time Before Tour</th>
+                  <th style="padding: 12px; text-align: left; border: 1px solid #1565c0;">Refund</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background: white; border-bottom: 1px solid #e0e0e0;">
+                  <td style="padding: 12px; border: 1px solid #e0e0e0;">More than 7 days</td>
+                  <td style="padding: 12px; border: 1px solid #e0e0e0; color: #27ae60; font-weight: bold;">90% refund</td>
+                </tr>
+                <tr style="background: #fafafa; border-bottom: 1px solid #e0e0e0;">
+                  <td style="padding: 12px; border: 1px solid #e0e0e0;">3–7 days</td>
+                  <td style="padding: 12px; border: 1px solid #e0e0e0; color: #f39c12; font-weight: bold;">50% refund</td>
+                </tr>
+                <tr style="background: white; border-bottom: 1px solid #e0e0e0;">
+                  <td style="padding: 12px; border: 1px solid #e0e0e0;">Less than 48 hours</td>
+                  <td style="padding: 12px; border: 1px solid #e0e0e0; color: #d32f2f; font-weight: bold;">No refund</td>
+                </tr>
+              </tbody>
+            </table>
+            <p style="margin-top: 12px; margin-bottom: 0; font-size: 13px; color: #555;">
+              <strong>Note:</strong> GST is non-refundable and will be deducted from any refund amount.
+            </p>
+          </div>
+
+          <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group mb-3">
+              <label for="reason">Reason for Cancellation <small class="text-muted">(Optional)</small></label>
+              <textarea name="reason" id="reason" class="form-control" rows="4" placeholder="Please tell us why you're cancelling (e.g., change of plans, personal reasons, etc.)"></textarea>
+            </div>
+
+            <div class="form-actions" style="display: flex; gap: 10px; margin-top: 25px;">
+              <button type="submit" class="btn-cancel-confirm" style="flex: 1; padding: 12px; background: #d32f2f; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer;">
+                Yes, Cancel This Booking
+              </button>
+              <a href="{% url 'my_bookings' %}" class="btn-back" style="flex: 1; padding: 12px; background: #666; color: white; border-radius: 6px; text-align: center; text-decoration: none; font-size: 16px; font-weight: bold;">
+                Go Back
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cancel-booking {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  min-height: 100vh;
+}
+
+.cancel-form {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-cancel-confirm:hover {
+  background: #b71c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-back:hover {
+  background: #424242;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group textarea {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.form-group textarea:focus {
+  outline: none;
+  border-color: #d32f2f;
+  box-shadow: 0 0 4px rgba(211, 47, 47, 0.2);
+}
+</style>
+
+{% endblock %}

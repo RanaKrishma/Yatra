@@ -1,0 +1,314 @@
+{% extends 'base.html' %}
+{% block content %} 
+  {% load static %}
+
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-outer text-center">
+      <div class="container">
+        <div class="breadcrumb-content">
+          <h2>Tours Grid View</h2>
+          <!-- <nav aria-label="breadcrumb">
+           <ul class="breadcrumb">
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+             <li class="breadcrumb-item active" aria-current="page">Destinations</li>
+           </ul>
+          </nav> -->
+        </div>
+      </div>
+      <div class="section-overlay"></div>
+    </section>
+    <!-- BreadCrumb Ends -->
+
+    <!-- Destinations -->
+    <section class="destinations">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              {% for i in t1 %}
+              <div class="col-lg-4">
+                <div class="destination-item">
+                  <div class="destination-image">
+                    <div class="destination-btn">
+                      <a class="btn-blue btn-red"> See More </a>
+                    </div>
+                    <img src="{{i.tours_img.url}}" alt="Image" />  
+                    <div class="destination-overlay"></div>
+                    <div class="destination-btn">
+                      <a href="/tourdetail/{{i.id}}/" class="btn-blue btn-red">Explore Now</a>
+                    </div>
+                  </div>
+                  <div class="destination-content">
+
+                    <h3><a href="/tourdetail/{{i.id}}/"> {{i.tours_name}} </a></h3>
+                    <span class="stars" style="color:gold;font-size:30px;">
+                      {% for _ in i.full_stars %}
+                            ★
+                      {% endfor %}
+                      {% for _ in i.empty_stars %}
+                            ☆
+                      {% endfor %}
+                    </span>
+<!--                    <div class="deal-rating">-->
+<!--                      <span class="fa fa-star checked"></span>-->
+<!--                      <span class="fa fa-star checked"></span>-->
+<!--                      <span class="fa fa-star checked"></span>-->
+<!--                      <span class="fa fa-star-o"></span>-->
+<!--                      <span class="fa fa-star-o"></span>-->
+<!--                    </div>-->
+<!--                    <p><i class="flaticon-time"></i> 5 days starts from <span class="bold"> </span></p>-->
+                  </div>
+                </div>
+              </div>
+                    {% endfor %}
+              <!-- <div class="col-lg-6">
+                <div class="destination-item">
+                  <div class="destination-image">
+                    <img src="{% static 'images/.jpg' %}" alt="Image" />
+                    <div class="destination-overlay"></div>
+                    <div class="destination-btn">
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                  <div class="destination-content">
+                    <h3><a href="tour-detail.html">Oktoberfest - 5 Days Camping</a></h3>
+                    <div class="deal-rating">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star-o"></span>
+                      <span class="fa fa-star-o"></span>
+                    </div>
+                    <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="destination-item">
+                  <div class="destination-image">
+                    <img src="{% static 'images/destination3.jpg' %}" alt="Image" />
+                    <div class="destination-overlay"></div>
+                    <div class="destination-btn">
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                  <div class="destination-content">
+                    <h3><a href="tour-detail.html">The Chelsea Flower Show</a></h3>
+                    <div class="deal-rating">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star-o"></span>
+                      <span class="fa fa-star-o"></span>
+                    </div>
+                    <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="destination-item">
+                  <div class="destination-image">
+                    <img src="{% static 'images/destination4.jpg' %}" alt="Image" />
+                    <div class="destination-overlay"></div>
+                    <div class="destination-btn">
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                  <div class="destination-content">
+                    <h3><a href="tour-detail.html">Harbin Ice Festival</a></h3>
+                    <div class="deal-rating">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star-o"></span>
+                      <span class="fa fa-star-o"></span>
+                    </div>
+                    <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="col-lg-6">
+                <div class="destination-item item-margin-zero">
+                  <div class="destination-image">
+                    <img src="{% static 'images/destination1.jpg' %}" alt="Image" />
+                    <div class="destination-overlay"></div>
+                    <div class="destination-btn">
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                  <div class="destination-content">
+                    <h3><a href="tour-detail.html">Bahamas Carribean Cruises</a></h3>
+                    <div class="deal-rating">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star-o"></span>
+                      <span class="fa fa-star-o"></span>
+                    </div>
+                    <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="destination-item item-margin-zero">
+                  <div class="destination-image">
+                    <img src="{% static 'images/destination2.jpg' %}" alt="Image" />
+                    <div class="destination-overlay"></div>
+                    <div class="destination-btn">
+                      <a href="#" class="btn-blue btn-red">Book Now</a>
+                    </div>
+                  </div>
+                  <div class="destination-content">
+                    <h3><a href="tour-detail.html">Bahamas Carribean Cruises</a></h3>
+                    <div class="deal-rating">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star-o"></span>
+                      <span class="fa fa-star-o"></span>
+                    </div>
+                    <p><i class="flaticon-time"></i> 5 days starts from <span class="bold">$659</span></p>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="pagination-content">
+                  <ul class="pagination">
+                    <li>
+                      <a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li>
+                      <a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div id="sidebar-sticky" class="col-lg-4">
+            <aside class="detail-sidebar sidebar-wrapper">
+              <div class="sidebar-item sidebar-item-dark">
+                <div class="detail-title">
+                  <h3>Search</h3>
+                </div>
+                <form>
+                  <div class="row">
+                    <div class="form-group col-lg-12">
+                      <input type="text" class="form-control" id="Name" placeholder="Enter the place you want to search" />
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="comment-btn">
+                        <a href="#" class="btn-blue btn-red">Search Now</a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="sidebar-item">
+                <div class="detail-title">
+                  <h3>Price Range</h3>
+                </div>
+                <div class="sidebar-content">
+                  <div class="range-slider">
+                    <div
+                      data-min="0"
+                      data-max="2000"
+                      data-unit="$"
+                      data-min-name="min_price"
+                      data-max-name="max_price"
+                      class="range-slider-ui ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"
+                      aria-disabled="false"
+                    >
+                      <span class="min-value">0 $</span>
+                      <span class="max-value">2000 $</span>
+                      <div class="ui-slider-range ui-widget-header ui-corner-all whole" style="left: 0%; width: 100%"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="sidebar-item">
+                <div class="detail-title">
+                  <h3>Rating</h3>
+                </div>
+                <div class="sidebar-content clearfix">
+                  <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label
+                      class="half"
+                      for="star4half"
+                      title="Pretty good - 4.5 stars"
+                    ></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label
+                      class="half"
+                      for="star2half"
+                      title="Kinda bad - 2.5 stars"
+                    ></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" checked /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" /><label
+                      class="half"
+                      for="starhalf"
+                      title="Sucks big time - 0.5 stars"
+                    ></label>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="sidebar-item">
+                <div class="detail-title">
+                  <h3>Facilities</h3>
+                </div>
+                <div class="sidebar-content">
+                  <form>
+                    <input type="checkbox" name="facility" value="wifi" /> Free Wifi<br />
+                    <input type="checkbox" name="facility" value="pool" /> Swimming Pool<br />
+                    <input type="checkbox" name="facility" value="housekeeping" /> Daily Housekeeping<br />
+                    <input type="checkbox" name="facility" value="bar" checked /> Restaurant Bar and Lounge<br />
+                    <div class="sidebar-btn">
+                      <a href="#" class="btn-blue btn-red">View More</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="sidebar-item">
+                <div class="detail-title">
+                  <h3>Categories</h3>
+                </div>
+                <ul class="event-list">
+                  <li><a href="#">  India </a></li>
+                  <li><a href="#"> Bali </a></li>
+                  <li><a href="#">  Thailand </a></li>
+                  <li><a href="#"> USA </a></li>
+                  <li><a href="#"> Canada </a></li>
+                  <li><a href="#">  Dubai </a></li>
+                  <li><a href="#">  Egypt </a></li>
+                  <li><a href="#">  Ice Land </a></li>
+                  <li><a href="#">  Japan </a></li>
+                  <li><a href="#">  Korea </a></li>
+                  <li><a href="#">  Maldives </a></li>
+                  <li><a href="#">  Singapore </a></li>
+                  <li><a href="#">  Sri Lanka </a></li>
+                  <li><a href="#">  Switzerland </a></li>
+                  <li><a href="#">  Turkey </a></li>
+
+                </ul>
+              </div>
+            </aside>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <!-- Destination Ends -->
+
+   {% endblock %}

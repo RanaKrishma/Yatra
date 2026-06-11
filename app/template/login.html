@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="breadcrumb-outer text-center">
+  <div class="container">
+    <div class="breadcrumb-content">
+      <h2>Login</h2>
+      <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Login</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="login">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <!-- Display Messages -->
+        {% if messages %}
+          <div class="alert-messages mb-4">
+            {% for message in messages %}
+              <div class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="login-form">
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-title">
+              <h2>Login</h2>
+              <p>Don't have an account? <a href="/register/">Register here</a></p>
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Username (Full Name)</label>
+              <input type="text" name="username" class="form-control" required placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group mb-3">
+              <label>Password</label>
+              <input type="password" name="password" class="form-control" required placeholder="Enter your password">
+            </div>
+
+            <div class="checkbox-outer mb-3">
+              <input type="checkbox"> Remember Me
+            </div>
+
+            <button type="submit" class="btn-blue btn-red w-100">Login</button>
+
+            <div class="text-center mt-3">
+              <a href="{% url 'forgot_password' %}">Forgot Password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

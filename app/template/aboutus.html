@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | Tours & Travel</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-section {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .about-section h1 {
+            text-align: center;
+            color: #1e88e5;
+            margin-bottom: 20px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .mission {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-left: 5px solid #1e88e5;
+        }
+
+        .mission h3 {
+            margin-top: 0;
+            color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="about-section">
+        <h1>About Us</h1>
+
+        <p>
+            <strong>Tours and Travel Management System</strong> is a web-based platform designed
+            to simplify travel planning and tour management. Our system helps travelers explore
+            destinations, book tour packages, and manage their journeys efficiently in one place.
+            It also assists travel agencies in managing customers, bookings, and tour details
+            digitally.
+        </p>
+
+        <p>
+            With the growing demand for online travel services, our platform provides a smart,
+            reliable, and user-friendly solution. From domestic trips to international tours,
+            we aim to make travel planning easy, fast, and enjoyable.
+        </p>
+
+        <div class="mission">
+            <h3>Our Mission</h3>
+            <p>
+                Our mission is to deliver a seamless travel experience by offering well-organized
+                tour packages, secure bookings, and personalized services. We strive to connect
+                travelers with unforgettable experiences while supporting travel businesses
+                through modern technology.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

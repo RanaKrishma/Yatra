@@ -1,0 +1,322 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+/* ================== BOOKING PAGE ================== */
+.booking-wrapper {
+  padding: 60px 0;
+  background: #ffffff;
+}
+
+.booking-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.booking-card {
+  background: #fff;
+  padding: 35px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* Inputs */
+.booking-card .form-control,
+.booking-card textarea,
+.booking-card select {
+  background: #f3f6f9;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 15px;
+}
+
+.booking-card textarea {
+  resize: none;
+  height: 120px;
+}
+
+.booking-card label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* Payment Button */
+.pay-btn {
+  background: #2f6fed;
+  color: #fff;
+  padding: 14px 45px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  float: right;
+  transition: 0.3s;
+}
+
+.pay-btn:hover {
+  background: #1f57c3;
+}
+
+/* Tour Summary */
+.summary-box {
+  background: #f3f6f9;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+}
+
+.summary-box img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.summary-box h5 {
+  font-weight: 700;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #28a745;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .pay-btn{
+    width:100%;
+    float:none;
+  }
+}
+</style>
+
+<section class="booking-wrapper">
+  <div class="container">
+
+    <h2 class="booking-title">Fill Your Details</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+
+        <div class="booking-card">
+
+          <!-- TOUR SUMMARY -->
+          <div class="summary-box row align-items-center">
+            <div class="col-md-4">
+              <img src="{{ t2.tours_img.url }}" alt="{{ t2.tours_name }}">
+            </div>
+            <div class="col-md-8">
+              <h5>{{ t2.tours_name }}</h5>
+              <p class="mb-1">Duration: {{ t2.duration }}</p>
+              <div class="price">₹ {{ t2.rate }}</div>
+            </div>
+          </div>
+
+          <!-- BOOKING FORM -->
+          <form method="post" action="/booking/{{ t2.id }}/">
+            {% csrf_token %}
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" name="first_name" placeholder="First Name*" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" name="last_name"  placeholder="Last Name*" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" name="phone_number" placeholder="Your Phone Number*" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="email" class="form-control" name="email" placeholder="Email*" required>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" value="{{ t2.tours_name }}" readonly>
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control" value="₹ {{ t2.rate }}" readonly>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="hotel">Hotel</label>
+                <select class="form-control" name="hotel" id="hotel">
+                  <option value="">-- select hotel --</option>
+                  {% for h in hotels %}
+                  <option value="{{ h.id }}">{{ h.name }}{% if h.city %} ({{ h.city }}){% endif %}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="room">Room type</label>
+                <select class="form-control" name="room" id="room">
+                  <option value="">-- select room --</option>
+                  {% for r in rooms %}
+                  <option value="{{ r.id }}">{{ r.room_type }} – ₹{{ r.price }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <input type="date" class="form-control" name="check_in" id="check_in" placeholder="Check‑in date">
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="date" class="form-control" name="check_out" id="check_out" placeholder="Check‑out date">
+              </div>
+
+              <div class="col-md-12 mb-3">
+                <input type="number" class="form-control" id="persons" name="persons" placeholder="Enter Number of Persons" min="1" required>
+              </div>
+
+              <!-- Dynamic Traveler Names Container -->
+              <div class="col-md-12 mb-4" id="travelers-container"></div>
+
+              <div class="col-md-12 mb-4">
+                <textarea name="message" placeholder="Ask any query*"></textarea>
+              </div>
+
+              <!-- Price Breakdown Section -->
+              <div class="col-md-12 mb-4">
+                <div style="background: #f3f6f9; padding: 20px; border-radius: 10px;">
+                  <h6 style="font-weight: 600; margin-bottom: 15px;">Price Breakdown</h6>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>Price per Person:</span>
+                    <span>₹ <span id="base-price">{{ t2.rate }}</span></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span>Number of Persons:</span>
+                    <span id="person-count">0</span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #ddd;">
+                    <span>Subtotal:</span>
+                    <span>₹ <span id="subtotal">0</span></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 15px; color: #28a745;">
+                    <span>Discount (Children < 5 years: 50%):</span>
+                    <span>- ₹ <span id="discount-amount">0</span></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 18px; color: #2f6fed;">
+                    <span>Total Amount:</span>
+                    <span>₹ <span id="final-price">0</span></span>
+                  </div>
+                </div>
+                <!-- Hidden input to store discount for backend -->
+                <input type="hidden" id="discount-value" name="discount_amount" value="0">
+                <input type="hidden" id="children-count" name="children_under_5" value="0">
+              </div>
+            </div>
+
+            <button type="submit" class="pay-btn">
+      
+              Do Payment
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+(function () {
+  var checkInEl = document.getElementById("check_in");
+  var checkOutEl = document.getElementById("check_out");
+  var personsEl = document.getElementById("persons");
+  var travelersContainer = document.getElementById("travelers-container");
+  var durationDays = parseInt("{{ t2.duration|default:0 }}", 10);
+  var durationNights = Math.max(durationDays - 1, 0);
+
+  if (!checkInEl || !checkOutEl || !durationDays) {
+    return;
+  }
+
+  function toYmd(dateObj) {
+    var year = dateObj.getFullYear();
+    var month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    var day = String(dateObj.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
+  }
+
+  // Set minimum date to tomorrow (prevent current and previous dates)
+  var tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  checkInEl.min = toYmd(tomorrow);
+
+  checkInEl.addEventListener("change", function () {
+    if (!checkInEl.value) {
+      return;
+    }
+    var parts = checkInEl.value.split("-");
+    var startDate = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    if (Number.isNaN(startDate.getTime())) {
+      return;
+    }
+    startDate.setDate(startDate.getDate() + durationNights);
+    checkOutEl.value = toYmd(startDate);
+  });
+
+  // Dynamic Traveler Names
+  if (personsEl && travelersContainer) {
+    personsEl.addEventListener("change", function () {
+      var numPersons = parseInt(this.value, 10) || 0;
+      travelersContainer.innerHTML = "";
+
+      if (numPersons > 0) {
+        var heading = document.createElement("h6");
+        heading.textContent = "Traveler Names & Ages";
+        heading.style.fontWeight = "600";
+        heading.style.marginBottom = "15px";
+        heading.style.marginTop = "20px";
+        travelersContainer.appendChild(heading);
+
+        for (var i = 1; i <= numPersons; i++) {
+          var rowDiv = document.createElement("div");
+          rowDiv.className = "row";
+
+          // Name field
+          var colNameDiv = document.createElement("div");
+          colNameDiv.className = "col-md-6 mb-3";
+
+          var nameInput = document.createElement("input");
+          nameInput.type = "text";
+          nameInput.className = "form-control";
+          nameInput.name = "traveler_name_" + i;
+          nameInput.placeholder = "Traveler " + i + " Name";
+          nameInput.required = true;
+
+          colNameDiv.appendChild(nameInput);
+
+          // Age field
+          var colAgeDiv = document.createElement("div");
+          colAgeDiv.className = "col-md-6 mb-3";
+
+          var ageInput = document.createElement("input");
+          ageInput.type = "number";
+          ageInput.className = "form-control";
+          ageInput.name = "traveler_age_" + i;
+          ageInput.placeholder = "Age";
+          ageInput.min = "0";
+          ageInput.max = "120";
+          ageInput.required = true;
+
+          colAgeDiv.appendChild(ageInput);
+
+          rowDiv.appendChild(colNameDiv);
+          rowDiv.appendChild(colAgeDiv);
+          travelersContainer.appendChild(rowDiv);
+        }
+      }
+    });
+  }
+})();
+</script>
+{% endblock %}
+
